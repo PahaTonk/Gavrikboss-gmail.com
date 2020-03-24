@@ -1,0 +1,31 @@
+#root {
+    display: grid;
+    grid-row: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+    grid-template-areas: 
+    'header header'
+    'navigation content';
+
+    width: 100vw;
+}
+
+.app {
+    &__header {
+        grid-area: header;
+    }
+
+    &__navigation {
+        grid-area: navigation;
+    }
+
+    &__content {
+        grid-area: content;
+    }
+}
+
+.header {
+    &__left-column {
+        width: 150px;
+    }
+}
