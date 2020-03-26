@@ -1,11 +1,11 @@
 import React from 'react';
-import './Header.scss';
+import styles from './Header.module.scss';
 
 const Header = () => {
     return (
-        <header className="app__header header">
-          <div className="app__logo header__left-column">
-            <img className="image" src="https://static.ucraft.net/fs/userFiles/version2-ru/images/7342-download-svg.gif" alt="bg" />
+        <header className={`app__header ${styles.header}`}>
+          <div className={styles['header__left-column']}>
+            <img className="image" src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG39.png" alt="bg" />
           </div>
         </header> 
     );

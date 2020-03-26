@@ -1,0 +1,12 @@
+.header {
+    background-color: #283e4a;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    
+    &__left-column {
+        max-height: 100%;
+        height: auto;
+        width: 30px;
+    }
+}

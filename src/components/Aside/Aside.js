@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Sidebar = () => {
+const Aside = () => {
     return (
-        <sidebar className="app__navigation navigation">
+        <aside className="app__navigation navigation">
             <nav>
             <ul className="navigation__list list">
                 <li className="navigation__item list__item-wrapper">
@@ -22,8 +22,8 @@ const Sidebar = () => {
                 </li>
             </ul>
             </nav>
-        </sidebar>
+        </aside>
     );
 };
 
-export default Sidebar;
+export default Aside;

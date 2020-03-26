@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import './App.scss';
 
 import Header from '../Header';
-import Sidebar from '../Sidebar/Sidebar';
+import Sidebar from '../Aside';
 import Profile from '../pages/Profile';
 
 function App() {
