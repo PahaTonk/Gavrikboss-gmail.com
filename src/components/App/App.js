@@ -3,7 +3,7 @@ import './app.scss';
 
 import Header from '../Header';
 import Sidebar from '../Aside';
-import Profile from '../pages/Profile';
+import Profile from '../Profile';
 
 function App() {
   return (

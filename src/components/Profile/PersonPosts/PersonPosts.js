@@ -1,16 +1,9 @@
 import React, { Fragment } from 'react';
+import styles from './person-posts.module.scss';
 
-const Profile = () => {
+const PersonPosts = () => {
     return (
         <Fragment>
-            <section className="profile__info" >
-                <div className="profile__background">
-                    <img className="image" src="https://kaifolog.ru/uploads/posts/2016-11/1480227668_00_1.jpg" />
-                </div>
-                <div className="profile__view">
-                    
-                </div>
-            </section>
             <section className="profile__posts posts">
                 <div className="posts__create"></div>
                 <div className="posts__list-wrapper">
@@ -32,4 +25,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default PersonPosts;
