@@ -1,5 +1,7 @@
+@import './../../helpers/variables.scss';
+
 .header {
-    background-color: #283e4a;
+    background-color: $main_color;
     display: flex;
     align-items: center;
     padding: 10px 15px;

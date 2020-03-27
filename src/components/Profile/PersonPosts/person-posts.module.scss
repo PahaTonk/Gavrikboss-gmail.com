@@ -1,0 +1,41 @@
+@import './../../../helpers/variables.scss';
+
+.posts {
+    @extend %flex-column;
+    padding: 10px 20px;
+
+    &__top {
+        @extend %flex-column;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    &__form {
+        @extend %flex-column;
+        width: 500px;
+        align-items: flex-end;
+    }
+
+    &__create {
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: $main_border;
+    }
+
+    &__send {
+        width: 100px;
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: $main_border;
+        background-color: $main_color;
+        color: $white;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    &__list {
+        @extend %flex-column;
+        align-items: center;
+    }
+}

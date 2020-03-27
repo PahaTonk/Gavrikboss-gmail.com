@@ -1,0 +1,28 @@
+.person {
+    height: 100%;
+
+    &__background {
+        height: 100px;
+        overflow: hidden;
+        background: url(https://kaifolog.ru/uploads/posts/2016-11/1480227668_00_1.jpg) no-repeat 0 -150px / cover;
+    }
+
+    &__view {
+        display: flex;
+        padding: 10px 20px;
+    }
+
+    &__ava {
+        flex-basis: 150px;
+        display: flex;
+        align-items: flex-end;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &__info {
+        flex-grow: 1;
+        margin-left: 25px;
+    }
+}

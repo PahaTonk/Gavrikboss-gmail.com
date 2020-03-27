@@ -1,0 +1,8 @@
+$main_color: #283e4a;
+$white: #ffffff;
+$main_border: 1px solid #e7e8e9;
+
+%flex-column {
+    display: flex;
+    flex-direction: column;
+}

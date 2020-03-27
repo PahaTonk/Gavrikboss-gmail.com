@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <header className={`app__header ${styles.header}`}>
           <div className={styles.header__leftColumn}>
-            <img className="image" src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG39.png" alt="bg" />
+            <img className="image" src="https://www.stickpng.com/assets/images/58406746657b0e0e08612e45.png" alt="bg" />
           </div>
         </header> 
     );

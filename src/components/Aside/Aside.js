@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './aside.module.scss';
 
 const Aside = () => {
@@ -6,20 +7,20 @@ const Aside = () => {
         <aside className={`app__navigation ${styles.navigation}`}>
             <nav>
                 <ul className={`list ${styles.navigation__list}`}>
-                    <li className={`list__item-wrapper ${styles.navigation__item}`}>
-                        <a className={`list__item ${styles.navigation__link}`}  href="">Profile</a>
+                    <li className={styles.navigation__item}>
+                        <NavLink className={`list__item ${styles.navigation__link}`} activeClassName={styles.navigation__link_active} to="/profile">Profile</NavLink>
                     </li>
-                    <li className={`list__item-wrapper ${styles.navigation__item}`}>
-                        <a className={`list__item ${styles.navigation__link}`}  href="">Messages</a>
+                    <li className={styles.navigation__item}>
+                        <NavLink className={`list__item ${styles.navigation__link}`} activeClassName={styles.navigation__link_active} to="/dialogs">Dialogs</NavLink>
                     </li>
-                    <li className={`list__item-wrapper ${styles.navigation__item}`}>
-                        <a className={`list__item ${styles.navigation__link}`}  href="">News</a>
+                    <li className={styles.navigation__item}>
+                        <NavLink className={`list__item ${styles.navigation__link}`} activeClassName={styles.navigation__link_active} exact to="/">News</NavLink>
                     </li>
-                    <li className={`list__item-wrapper ${styles.navigation__item}`}>
-                        <a className={`list__item ${styles.navigation__link}`}  href="">Music</a>
+                    <li className={styles.navigation__item}>
+                        <NavLink className={`list__item ${styles.navigation__link}`} activeClassName={styles.navigation__link_active} exact to="/">Music</NavLink>
                     </li>
-                    <li className={`list__item-wrapper ${styles.navigation__item}`}>
-                        <a className={`list__item ${styles.navigation__link}`}  href="">Settings</a>
+                    <li className={styles.navigation__item}>
+                        <NavLink className={`list__item ${styles.navigation__link}`} activeClassName={styles.navigation__link_active} exact to="/">Settings</NavLink>
                     </li>
                 </ul>
             </nav>

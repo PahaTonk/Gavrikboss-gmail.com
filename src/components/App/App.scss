@@ -1,23 +1,34 @@
-#root {
+@import './../../helpers/variables.scss';
+
+.app {
     display: grid;
     grid-template-columns: 2fr 10fr;
     grid-template-rows: 50px 1fr;
+    grid-gap: 15px;
     grid-template-areas: 
     'header header'
     'navigation content';
     width: 100%;
-}
 
-.app {
     &__header {
         grid-area: header;
     }
 
     &__navigation {
         grid-area: navigation;
+        margin-left: 10px;
     }
 
     &__content {
         grid-area: content;
+        margin-right: 10px;
+        background-color: $white;
+    }
+
+    &__navigation,
+    &__content {
+        overflow: hidden;
+        border-radius: 15px;
+        border: $main_border;
     }
 }

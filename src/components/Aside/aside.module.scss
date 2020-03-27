@@ -1,19 +1,32 @@
 .navigation {
-    background-color: #9ac5dc;
+    height: max-content;
+    background-color: #ffffff;
 
     &__list {
-        padding: 10px 15px;
     }
     
     &__item {
-        margin-bottom: 10px;
+        font-weight: 500;
 
         &:last-child {
-            margin-top: 30px;
+            margin-top: 10px;
         }
     }
     
     &__link {
-        
+        display: block;
+        padding: 10px;
+        color: #000000;
+        transition: 150ms;
+
+        &:hover {
+            background-color: #58788a;
+            color: #ffffff;
+        }
+
+        &_active {
+            background-color: #58788a;
+            color: #ffffff;
+        }
     }
 }
