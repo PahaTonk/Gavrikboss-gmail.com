@@ -10,7 +10,7 @@ const PersonPosts = () => {
                 <div className={styles.posts__top}>
                     <form className={styles.posts__form}>
                         <textarea className={styles.posts__create} placeholder="Write posts..."></textarea>
-                        <input className={styles.posts__send} type="submit" placeholder="Send"/>
+                        <input className={styles.posts__send} type="submit" value="Send"/>
                     </form>
                 </div>
                 <div className="posts__bottom">

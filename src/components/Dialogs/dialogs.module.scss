@@ -1,0 +1,46 @@
+@import './../../helpers/variables.scss';
+
+.dialogs {
+    @include flex(space-between);
+
+    &__left {
+        width: 25%;
+    }
+
+    &__right {
+        width: 70%;
+    }
+}
+
+.users {
+    &__list {
+        @extend %flex-column;
+
+        border-right: $main_border;
+    }
+    
+    &__item {
+        @include flex(space-between);
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    &__ava {
+        flex-basis: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+    }
+
+    &__info {
+        flex-grow: 1;
+    }
+}
+
+.messages {
+
+    &__list {
+        @extend %flex-column;
+    }
+}

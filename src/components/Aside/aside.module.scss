@@ -1,9 +1,6 @@
 .navigation {
     height: max-content;
     background-color: #ffffff;
-
-    &__list {
-    }
     
     &__item {
         font-weight: 500;
@@ -16,17 +13,5 @@
     &__link {
         display: block;
         padding: 10px;
-        color: #000000;
-        transition: 150ms;
-
-        &:hover {
-            background-color: #58788a;
-            color: #ffffff;
-        }
-
-        &_active {
-            background-color: #58788a;
-            color: #ffffff;
-        }
     }
 }

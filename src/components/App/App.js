@@ -13,7 +13,7 @@ function App() {
       <Fragment>
         <Header />
         <Sidebar />
-        <main className="app__content profile">
+        <main className="app__content profile dialogs">
           <Route path="/profile" component={Profile}/>
           <Route path="/dialogs" component={Dialogs}/>
         </main>

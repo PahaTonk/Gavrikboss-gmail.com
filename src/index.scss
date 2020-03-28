@@ -39,3 +39,20 @@ code {
     color: #000000;
   }
 }
+
+.list {
+  &__item {
+    color: #000000;
+    transition: 150ms;
+
+    &:hover {
+      background-color: #58788a;
+      color: #ffffff;
+    }
+
+    &_active {
+      background-color: #58788a;
+      color: #ffffff;
+    }
+  }
+}
