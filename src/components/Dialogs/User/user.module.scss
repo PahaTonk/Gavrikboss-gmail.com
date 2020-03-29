@@ -1,0 +1,21 @@
+@import './../../../helpers/variables.scss';
+
+.users {    
+    &__item {
+        @include flex(space-between);
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    &__ava {
+        flex-basis: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+    }
+
+    &__info {
+        flex-grow: 1;
+    }
+}

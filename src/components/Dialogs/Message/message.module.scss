@@ -1,0 +1,10 @@
+@import './../../../helpers/variables.scss';
+
+.messages {
+    &__item {
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: $main_border;
+        margin-bottom: 10px;
+    }
+}
