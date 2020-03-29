@@ -6,7 +6,7 @@ const Aside = () => {
     return (
         <aside className={`app__navigation ${styles.navigation}`}>
             <nav>
-                <ul className={`list ${styles.navigation__list}`}>
+                <ul className="list navigation__list">
                     <li className={styles.navigation__item}>
                         <NavLink className={`list__item ${styles.navigation__link}`} activeClassName="list__item_active" to="/profile">Profile</NavLink>
                     </li>

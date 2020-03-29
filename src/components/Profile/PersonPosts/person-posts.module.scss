@@ -1,9 +1,6 @@
 @import './../../../helpers/variables.scss';
 
 .posts {
-    @extend %flex-column;
-    padding: 10px 20px;
-
     &__top {
         @extend %flex-column;
         align-items: center;

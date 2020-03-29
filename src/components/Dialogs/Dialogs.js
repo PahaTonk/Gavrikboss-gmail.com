@@ -24,7 +24,7 @@ const Dialogs = () => {
                     </li>
                 </ul>
             </section>
-            <section className={`${styles.dialogs__right} ${styles.messages}`}>
+            <section className={`dialogs__right ${styles.messages}`}>
                 <ul className={`${styles.messages__list} list`}>
                     <li className={`${styles.messages__itemWrapper} ${styles.messages__itemWrapper_left}`}>
                         <Message message="Hi bro, how are you?" />
