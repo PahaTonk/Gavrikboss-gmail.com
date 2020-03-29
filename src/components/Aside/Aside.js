@@ -8,9 +8,9 @@ import Friend from './Friend';
  * @description navigation panel(left column)
  */
 const Aside = ({friendsInfo}) => {
-    const friends = friendsInfo.map(({id, name, avatar}) => (
+    const friends = friendsInfo.map(({id, ...rest}) => (
         <li key={id}>
-            <Friend id={id} name={name} avatar={avatar}/>
+            <Friend id={id} {...rest}/>
         </li>
     ));
 

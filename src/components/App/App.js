@@ -8,22 +8,21 @@ import Profile from '../Profile';
 import Dialogs from '../Dialogs';
 
 const App = ({appState : {profileState, dialogsState, navigationState}}) => {
-  console.log(navigationState);
-  return (
-    <BrowserRouter>
-      <div className={styles.app}>
-        <Header />
-        <Sidebar {...navigationState}/>
-        <main className={styles.app__content}>
-          <Route path="/profile" render={() => <Profile {...profileState}/>} />
-          <Route path="/dialogs" render={() => <Dialogs {...dialogsState}/>} />
-          <Route path="/news" />
-          <Route path="/musik"/>
-          <Route path="/settings" />
-        </main>
-      </div>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <div className={styles.app}>
+                <Header />
+                <Sidebar {...navigationState}/>
+                <main className={styles.app__content}>
+                    <Route path="/profile" render={() => <Profile {...profileState}/>} />
+                    <Route path="/dialogs" render={() => <Dialogs {...dialogsState}/>} />
+                    <Route path="/news" />
+                    <Route path="/musik"/>
+                    <Route path="/settings" />
+                </main>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

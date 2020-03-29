@@ -36,8 +36,8 @@
 }
 
 .messages {
-    display: flex;
-    align-items: flex-end;
+    display: grid;
+    grid-template-rows: 1fr 100px;
     padding: 10px 15px;
 
     &__list {

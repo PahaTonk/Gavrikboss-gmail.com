@@ -3,6 +3,7 @@ import styles from './dialogs.module.scss';
 
 import User from './User';
 import Message from './Message';
+import FormText from '../FormText';
 
 /**
  * @description dialogs page
@@ -10,6 +11,9 @@ import Message from './Message';
  * @param {Array} messagesInfo users messages information
  */
 const Dialogs = ({usersInfo, messagesInfo}) => {
+    const messageCreateRef = React.createRef();
+    const sendMessage = event => {};
+    const changeMessage = event => {};
     const users = usersInfo.map(({id, name, avatar}) => (
         <li key={id} className="users__itemWrapper">
             <User linkId={id} avatar={avatar} name={name}/>
@@ -36,6 +40,11 @@ const Dialogs = ({usersInfo, messagesInfo}) => {
                 <ul className={`${styles.messages__list} list`}>
                     {messages}
                 </ul>
+                <FormText textareaRef={messageCreateRef}
+                            onSubmit={sendMessage}
+                            onChange={changeMessage}
+                            placeholder={'Write message...'}
+                            />
             </section>
         </div>
     );

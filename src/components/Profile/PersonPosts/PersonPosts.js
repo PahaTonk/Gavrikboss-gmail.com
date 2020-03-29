@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import styles from './../profile.module.scss';
 
 import Posts from './Post';
+import FormText from '../../FormText';
 
 /**
  * @description profile component, creates and shows user posts
@@ -13,14 +14,25 @@ const PersonPosts = ({postsData}) => {
             <Posts {...postData}/>
         </li>
     ));
+    const postCreateRef = React.createRef();
+    const sendPost = event => {
+        event.preventDefault();
+        const text = postCreateRef.current.value;
+        console.log(text);
+    }
+    const changePost = event => {
+        const text = postCreateRef.current.value;
+        console.log(postCreateRef, text);
+    }
 
     return (
         <Fragment>
             <div className={styles.posts__top}>
-                <form className={styles.posts__form}>
-                    <textarea className={styles.posts__create} placeholder="Write posts..."></textarea>
-                    <input className={styles.posts__send} type="submit" value="Send"/>
-                </form>
+                <FormText textareaRef={postCreateRef}
+                            onSubmit={sendPost}
+                            onChange={changePost}
+                            placeholder={'Write posts...'}
+                            />
             </div>
             <div className="posts__bottom">
                 <ul className={`${styles.posts__list} list`}>
