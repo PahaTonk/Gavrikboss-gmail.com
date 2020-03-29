@@ -2,10 +2,97 @@
 
 .person {
     height: 100%;
+
+    &__background {
+        height: 100px;
+        overflow: hidden;
+        background: url(https://kaifolog.ru/uploads/posts/2016-11/1480227668_00_1.jpg) no-repeat 0 -150px / cover;
+    }
+
+    &__view {
+        display: flex;
+        padding: 10px 20px;
+    }
+
+    &__ava {
+        flex-basis: 150px;
+        display: flex;
+        align-items: flex-end;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &__info {
+        flex-grow: 1;
+        margin-left: 25px;
+    }
 }
 
 .posts {
     @extend %flex-column;
 
     padding: 10px 20px;
+
+    &__top {
+        @extend %flex-column;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    &__form {
+        @extend %flex-column;
+        width: 500px;
+        align-items: flex-end;
+    }
+
+    &__create {
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: $main_border;
+    }
+
+    &__send {
+        width: 100px;
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: $main_border;
+        background-color: $main_color;
+        color: $white;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    &__list {
+        @extend %flex-column;
+        align-items: center;
+    }
+    
+    &__item {
+        display: grid;
+        grid-template: 80% 20% / 50px 1fr;
+        width: 500px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        border: $main_border;
+        border-radius: 15px;
+    }
+    
+    &__ava {
+        height: 50px;
+        display: flex;
+        align-items: flex-end;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &__text {
+        margin-left: 25px;
+    }
+
+    &__footer {
+        grid-column-end: -1;
+        text-align: right;
+    }
 }

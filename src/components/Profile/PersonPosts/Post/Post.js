@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './posts.module.scss';
+import styles from './../../profile.module.scss';
 
 const Posts = ({ text, likes, avatar }) => {
     return (

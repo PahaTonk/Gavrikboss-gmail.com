@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './person-posts.module.scss';
+import styles from './../profile.module.scss';
 
 import Posts from './Post';
 

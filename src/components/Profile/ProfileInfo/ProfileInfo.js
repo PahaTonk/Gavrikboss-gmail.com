@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './profileInfo.module.scss';
+import styles from './../profile.module.scss';
 
 const ProfileInfo = () => {
     return (

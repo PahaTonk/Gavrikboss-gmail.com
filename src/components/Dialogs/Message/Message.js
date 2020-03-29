@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './message.module.scss';
+import styles from './../dialogs.module.scss';
 
 const Message = ({message}) => {
     return  (
