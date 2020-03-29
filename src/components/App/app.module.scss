@@ -2,7 +2,7 @@
 
 .app {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 240px 5fr;
     grid-template-rows: 50px 1fr;
     grid-gap: 15px;
     grid-template-areas: 
@@ -14,7 +14,7 @@
         grid-area: header;
     }
 
-    &__navigation {
+    &__aside {
         grid-area: navigation;
         margin-left: 10px;
     }

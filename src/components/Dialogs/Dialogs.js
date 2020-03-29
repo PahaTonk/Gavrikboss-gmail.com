@@ -15,11 +15,14 @@ const Dialogs = ({usersInfo, messagesInfo}) => {
             <User linkId={id} avatar={avatar} name={name}/>
         </li>
     ));
-    const messages = messagesInfo.map(({id, messageInfo, isMyMessage}) => (
-        <li key={id} className={`${styles.messages__itemWrapper} ${!isMyMessage && styles.messages__itemWrapper_left}`}>
-            <Message messageInfo={messageInfo} />
-        </li>
-    ));
+    const messages = messagesInfo.map(({id, isMyMessage, ...rest}) => {
+        const leftMessage = isMyMessage ? '' : styles.messages__itemWrapper_left
+        return (
+            <li key={id} className={`${styles.messages__itemWrapper} ${leftMessage}`}>
+                <Message left={!isMyMessage} {...rest}/>
+            </li>
+        );
+    });
 
     return (
         //TODO: применить фрагмент

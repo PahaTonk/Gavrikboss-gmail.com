@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
-import {usersInfo, messagesInfo, postsData} from './data';
+import state from './redux/state';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App  usersInfo={usersInfo}
-          messagesInfo={messagesInfo}
-          postsData={postsData} />
+    <App appState={state} />
   </React.StrictMode>,
   document.getElementById('root')
 );

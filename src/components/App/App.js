@@ -7,15 +7,16 @@ import Sidebar from '../Aside';
 import Profile from '../Profile';
 import Dialogs from '../Dialogs';
 
-const App = ({usersInfo, messagesInfo, postsData}) => {
+const App = ({appState : {profileState, dialogsState, navigationState}}) => {
+  console.log(navigationState);
   return (
     <BrowserRouter>
       <div className={styles.app}>
         <Header />
-        <Sidebar />
+        <Sidebar {...navigationState}/>
         <main className={styles.app__content}>
-          <Route path="/profile" render={() => <Profile postsData={postsData}/>} />
-          <Route path="/dialogs" render={() => <Dialogs usersInfo={usersInfo} messagesInfo={messagesInfo}/>} />
+          <Route path="/profile" render={() => <Profile {...profileState}/>} />
+          <Route path="/dialogs" render={() => <Dialogs {...dialogsState}/>} />
           <Route path="/news" />
           <Route path="/musik"/>
           <Route path="/settings" />
