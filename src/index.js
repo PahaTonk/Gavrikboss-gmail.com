@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
+import {usersInfo, messagesInfo, postsData} from './data';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App  usersInfo={usersInfo}
+          messagesInfo={messagesInfo}
+          postsData={postsData} />
   </React.StrictMode>,
   document.getElementById('root')
 );

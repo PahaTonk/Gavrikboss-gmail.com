@@ -7,15 +7,18 @@ import Sidebar from '../Aside';
 import Profile from '../Profile';
 import Dialogs from '../Dialogs';
 
-function App() {
+const App = ({usersInfo, messagesInfo, postsData}) => {
   return (
     <BrowserRouter>
       <Fragment>
         <Header />
         <Sidebar />
         <main className="app__content profile dialogs">
-          <Route path="/profile" component={Profile}/>
-          <Route path="/dialogs" component={Dialogs}/>
+          <Route path="/profile" render={() => <Profile postsData={postsData}/>} />
+          <Route path="/dialogs" render={() => <Dialogs usersInfo={usersInfo} messagesInfo={messagesInfo}/>} />
+          <Route path="/news" />
+          <Route path="/musik"/>
+          <Route path="/settings" />
         </main>
       </Fragment>
     </BrowserRouter>

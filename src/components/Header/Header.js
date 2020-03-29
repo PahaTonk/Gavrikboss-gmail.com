@@ -1,6 +1,9 @@
 import React from 'react';
 import styles from './header.module.scss';
 
+/**
+ * @description header (top row)
+ */
 const Header = () => {
     return (
         <header className={`app__header ${styles.header}`}>

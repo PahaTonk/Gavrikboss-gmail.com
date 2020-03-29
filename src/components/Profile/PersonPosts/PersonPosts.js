@@ -3,25 +3,11 @@ import styles from './../profile.module.scss';
 
 import Posts from './Post';
 
-const PersonPosts = () => {
-    const postsData = [
-        {
-            id: 'imgb',
-            text: 'I\'m good boy =)',
-            likes: {
-                count: 0
-            },
-            avatar: 'https://i.pinimg.com/736x/17/df/43/17df43c76a1155a2efc74581e404f494.jpg'
-        },
-        {
-            id: 'ww',
-            text: 'Wow wow',
-            likes: {
-                count: 0
-            },
-            avatar: 'https://i.pinimg.com/736x/17/df/43/17df43c76a1155a2efc74581e404f494.jpg'
-        }
-    ];
+/**
+ * @description profile component, creates and shows user posts
+ * @param {Array} postsData posts information
+ */
+const PersonPosts = ({postsData}) => {
     const posts = postsData.map(({id, ...postData}) => (
         <li key={id} className={`${styles.posts__item} list__item`}>
             <Posts {...postData}/>
