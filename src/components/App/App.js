@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import './app.scss';
+import styles from './app.module.scss';
 
 import Header from '../Header';
 import Sidebar from '../Aside';
@@ -10,17 +10,17 @@ import Dialogs from '../Dialogs';
 const App = ({usersInfo, messagesInfo, postsData}) => {
   return (
     <BrowserRouter>
-      <Fragment>
+      <div className={styles.app}>
         <Header />
         <Sidebar />
-        <main className="app__content profile dialogs">
+        <main className={styles.app__content}>
           <Route path="/profile" render={() => <Profile postsData={postsData}/>} />
           <Route path="/dialogs" render={() => <Dialogs usersInfo={usersInfo} messagesInfo={messagesInfo}/>} />
           <Route path="/news" />
           <Route path="/musik"/>
           <Route path="/settings" />
         </main>
-      </Fragment>
+      </div>
     </BrowserRouter>
   );
 }

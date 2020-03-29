@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './aside.module.scss';
+import appStyles from './../App/app.module.scss';
 
 /**
  * @description navigation panel(left column)
  */
 const Aside = () => {
     return (
-        <aside className={`app__navigation ${styles.navigation}`}>
+        <aside className={`${appStyles.app__navigation} ${styles.navigation}`}>
             <nav>
                 <ul className="list navigation__list">
                     <li className={styles.navigation__item}>
