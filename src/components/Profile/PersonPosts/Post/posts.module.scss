@@ -1,17 +1,7 @@
 @import './../../../../helpers/variables.scss';
 
 .posts {
-    &__item {
-        display: flex;
-        width: 500px;
-        padding: 10px 20px;
-        margin-bottom: 20px;
-        border: $main_border;
-        border-radius: 15px;
-    }
-
     &__ava {
-        flex-basis: 50px;
         height: 50px;
         display: flex;
         align-items: flex-end;
@@ -21,5 +11,10 @@
 
     &__text {
         margin-left: 25px;
+    }
+
+    &__footer {
+        grid-column-end: -1;
+        text-align: right;
     }
 }

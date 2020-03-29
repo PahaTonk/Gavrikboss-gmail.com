@@ -35,4 +35,14 @@
         @extend %flex-column;
         align-items: center;
     }
+    
+    &__item {
+        display: grid;
+        grid-template: 80% 20% / 50px 1fr;
+        width: 500px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        border: $main_border;
+        border-radius: 15px;
+    }
 }
