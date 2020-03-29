@@ -33,7 +33,7 @@ const state = {
                 messageInfo: {
                     text: 'Hi bro, how are you?'
                 },
-                avatar: 'https://i.pinimg.com/736x/17/df/43/17df43c76a1155a2efc74581e404f494.jpg',
+                avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg',
                 isMyMessage: true
             },
             {
@@ -58,7 +58,7 @@ const state = {
                 messageInfo: {
                     text: 'Good idea let\'s go!!!'
                 },
-                avatar: 'https://i.pinimg.com/736x/17/df/43/17df43c76a1155a2efc74581e404f494.jpg',
+                avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg',
                 isMyMessage: true
             },
         ]
@@ -71,7 +71,7 @@ const state = {
                 likes: {
                     count: 0
                 },
-                avatar: 'https://i.pinimg.com/736x/17/df/43/17df43c76a1155a2efc74581e404f494.jpg'
+                avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg'
             },
             {
                 id: 'ww',
@@ -79,7 +79,7 @@ const state = {
                 likes: {
                     count: 0
                 },
-                avatar: 'https://i.pinimg.com/736x/17/df/43/17df43c76a1155a2efc74581e404f494.jpg'
+                avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg'
             }
         ]
     },
