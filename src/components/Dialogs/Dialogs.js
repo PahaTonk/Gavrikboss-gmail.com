@@ -12,8 +12,14 @@ import FormText from '../FormText';
  */
 const Dialogs = ({usersInfo, messagesInfo}) => {
     const messageCreateRef = React.createRef();
-    const sendMessage = event => {};
-    const changeMessage = event => {};
+
+    const sendMessage = event => {
+        event.preventDefault();
+    };
+    const changeMessage = event => {
+        event.preventDefault();
+    };
+
     const users = usersInfo.map(({id, name, avatar}) => (
         <li key={id} className="users__itemWrapper">
             <User linkId={id} avatar={avatar} name={name}/>

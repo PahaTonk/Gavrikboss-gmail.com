@@ -1,5 +1,7 @@
+let renderEntireTree = () => {};
+
 const state = {
-    dialogsState: { 
+    dialogsState: {
         usersInfo: [
             {
                 id: 'vatson',
@@ -64,9 +66,10 @@ const state = {
         ]
     },
     profileState: {
+        currentPostText: '',
         postsData: [
             {
-                id: 'imgb',
+                id: Math.floor(Math.random()*1000000),
                 text: 'I\'m good boy =)',
                 likes: {
                     count: 0
@@ -74,7 +77,7 @@ const state = {
                 avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg'
             },
             {
-                id: 'ww',
+                id: Math.floor(Math.random()*1000000),
                 text: 'Wow wow',
                 likes: {
                     count: 0
@@ -83,11 +86,43 @@ const state = {
             }
         ]
     },
-    navigationState: null
-}; 
+    navigationState: null,
+};
 
 state.navigationState = {
     friendsInfo: state.dialogsState.usersInfo.filter(user => user.friend)
 }
+
+/**
+ * @description save new post to state
+ */
+export const addPost = () => {
+    const newPost = {
+        id: Math.floor(Math.random()*1000000),
+        text: state.profileState.currentPostText,
+        likes: {
+            count: 0
+        },
+        avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg'
+    }
+
+    state.profileState.postsData.push(newPost);
+    renderEntireTree(state);
+};
+
+/**
+ * @description save new text post to state
+ */
+export const changePostText = text => {
+    state.profileState.currentPostText = text;
+    renderEntireTree(state);
+};
+
+/**
+ * @description subscribe on rerender app
+ */
+export const subscribe = observer => {
+    renderEntireTree = observer;
+};
 
 export default state;

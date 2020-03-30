@@ -8,30 +8,41 @@ import FormText from '../../FormText';
  * @description profile component, creates and shows user posts
  * @param {Array} postsData posts information
  */
-const PersonPosts = ({postsData}) => {
+const PersonPosts = ({currentPostText, postsData, addPost, changePostText}) => {
+    const postCreateRef = React.createRef();
+    
+    /**
+     * @description send new post to state
+     */
+    const onSubmit = event => {
+        event.preventDefault();
+
+        addPost();
+        changePostText('');
+    };
+
+    /**
+     * @description send text new post to state
+     */
+    const onChange = () => {
+        const text = postCreateRef.current.value;
+        changePostText(text);
+    };
+
     const posts = postsData.map(({id, ...postData}) => (
         <li key={id} className={`${styles.posts__item} list__item`}>
             <Posts {...postData}/>
         </li>
     ));
-    const postCreateRef = React.createRef();
-    const sendPost = event => {
-        event.preventDefault();
-        const text = postCreateRef.current.value;
-        console.log(text);
-    }
-    const changePost = event => {
-        const text = postCreateRef.current.value;
-        console.log(postCreateRef, text);
-    }
 
     return (
         <Fragment>
             <div className={styles.posts__top}>
                 <FormText textareaRef={postCreateRef}
-                            onSubmit={sendPost}
-                            onChange={changePost}
+                            onSubmit={onSubmit}
+                            onChange={onChange}
                             placeholder={'Write posts...'}
+                            value={currentPostText}
                             />
             </div>
             <div className="posts__bottom">

@@ -8,14 +8,14 @@ import ProfileInfo from './ProfileInfo';
  * @description profile page
  * @param {Array} postsData posts information
  */
-const Profile = ({postsData}) => {
+const Profile = (props) => {
     return (
         <Fragment>
             <section className={`profile__top ${styles.person}`}>
                 <ProfileInfo />
             </section>
             <section className={`profile__bottom ${styles.posts}`}>
-                <PersonPosts postsData={postsData}/>
+                <PersonPosts {...props}/>
             </section>
         </Fragment>
     );
