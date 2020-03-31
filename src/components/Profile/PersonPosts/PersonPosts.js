@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styles from './../profile.module.scss';
-import {ADD_POST, UPDATE_NEW_POST_TEXT} from './../../../constants';
+import {addPostActionCreator, updateNewPostTextActionCreator} from './../../../redux/actionCreators';
 
 import Posts from './Post';
 import FormText from '../../FormText';
@@ -19,9 +19,11 @@ const PersonPosts = ({currentPostText, postsData, dispatch}) => {
      */
     const onSubmit = event => {
         event.preventDefault();
+        const addPostAction = addPostActionCreator();
+        const updateTextPostAction = updateNewPostTextActionCreator('');
 
-        dispatch({type: ADD_POST});
-        dispatch({type: UPDATE_NEW_POST_TEXT, text: ''});
+        dispatch(addPostAction);
+        dispatch(updateTextPostAction);
     };
 
     /**
@@ -29,7 +31,9 @@ const PersonPosts = ({currentPostText, postsData, dispatch}) => {
      */
     const onChange = () => {
         const text = postCreateRef.current.value;
-        dispatch({type: UPDATE_NEW_POST_TEXT, text});
+        const updateTextPostAction = updateNewPostTextActionCreator(text);
+
+        dispatch(updateTextPostAction);
     };
 
     const posts = postsData.map(({id, ...postData}) => (

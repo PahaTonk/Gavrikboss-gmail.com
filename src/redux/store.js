@@ -158,6 +158,7 @@ const store = {
         }
     }
 }
+
 store.initState();
 
 export default store;
