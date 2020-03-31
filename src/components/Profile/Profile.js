@@ -6,7 +6,6 @@ import ProfileInfo from './ProfileInfo';
 
 /**
  * @description profile page
- * @param {Array} postsData posts information
  */
 const Profile = (props) => {
     return (

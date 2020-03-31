@@ -4,22 +4,21 @@ import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
 
-import state from './redux/state';
-import {addPost, changePostText, subscribe} from './redux/state';
+import store from './redux/store';
 
-const renderEntireTree = (state) => {
+const renderEntireTree = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <App appState={state} addPost={addPost} changePostText={changePostText}/>
+            <App appState={store.state} dispatch={store.dispatch.bind(store)} />
         </React.StrictMode>,
         document.getElementById('root')
     );
 };
 
-renderEntireTree(state);
-subscribe(renderEntireTree);
+renderEntireTree();
+store.subscribe(renderEntireTree);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+// Learn more about service workers: https://bit.ly/CRA-PWA 
 serviceWorker.unregister();

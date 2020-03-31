@@ -1,14 +1,17 @@
 import React, { Fragment } from 'react';
 import styles from './../profile.module.scss';
+import {ADD_POST, UPDATE_NEW_POST_TEXT} from './../../../constants';
 
 import Posts from './Post';
 import FormText from '../../FormText';
 
 /**
  * @description profile component, creates and shows user posts
- * @param {Array} postsData posts information
+ * @param {Array} currentPostText current text for textarea
+ * @param {Array} postsData saved posts list
+ * @param {Function} dispatch callback, check actions
  */
-const PersonPosts = ({currentPostText, postsData, addPost, changePostText}) => {
+const PersonPosts = ({currentPostText, postsData, dispatch}) => {
     const postCreateRef = React.createRef();
     
     /**
@@ -17,8 +20,8 @@ const PersonPosts = ({currentPostText, postsData, addPost, changePostText}) => {
     const onSubmit = event => {
         event.preventDefault();
 
-        addPost();
-        changePostText('');
+        dispatch({type: ADD_POST});
+        dispatch({type: UPDATE_NEW_POST_TEXT, text: ''});
     };
 
     /**
@@ -26,7 +29,7 @@ const PersonPosts = ({currentPostText, postsData, addPost, changePostText}) => {
      */
     const onChange = () => {
         const text = postCreateRef.current.value;
-        changePostText(text);
+        dispatch({type: UPDATE_NEW_POST_TEXT, text});
     };
 
     const posts = postsData.map(({id, ...postData}) => (
