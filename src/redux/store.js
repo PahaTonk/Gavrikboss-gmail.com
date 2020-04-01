@@ -1,4 +1,9 @@
-import {ADD_POST, UPDATE_NEW_POST_TEXT} from '../constants';
+import {
+    ADD_POST,
+    UPDATE_NEW_POST_TEXT,
+    ADD_MESSAGE,
+    UPDATE_MESSAGE_TEXT
+} from '../constants';
 
 const store = {
     _state: {
@@ -29,9 +34,10 @@ const store = {
                     avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUsXCljibokfNvJV6UKn6xBUdqLLvGy50eA2pd0saYGVfD1A2r'
                 }
             ],
+            currentMessageText: '',
             messagesInfo: [
                 {
-                    id: 'hbhay',
+                    id:  Math.floor(Math.random()*1000000),
                     idUser: '',
                     messageInfo: {
                         text: 'Hi bro, how are you?'
@@ -40,7 +46,7 @@ const store = {
                     isMyMessage: true
                 },
                 {
-                    id: 'hif',
+                    id:  Math.floor(Math.random()*1000000),
                     idUser: 'vatson',
                     messageInfo: {
                         text: 'Hi, i\'m fine!'
@@ -48,7 +54,7 @@ const store = {
                     avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQITmE6hyq7RBxa8T7OiAHftxOEph097nZf2UxDr44mjhovGKxI',
                 },
                 {
-                    id: 'lgbc',
+                    id:  Math.floor(Math.random()*1000000),
                     idUser: 'vatson',
                     messageInfo: {
                         text: 'Let\'s go bark cats?'
@@ -56,7 +62,7 @@ const store = {
                     avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQITmE6hyq7RBxa8T7OiAHftxOEph097nZf2UxDr44mjhovGKxI',
                 },
                 {
-                    id: 'gilg',
+                    id:  Math.floor(Math.random()*1000000),
                     idUser: '',
                     messageInfo: {
                         text: 'Good idea let\'s go!!!'
@@ -101,7 +107,8 @@ const store = {
      * @description save new post to state
      */
     _addPost() {
-        const newPost = {
+        const posts = this._state.profileState.postsData;
+        const post = {
             id: Math.floor(Math.random()*1000000),
             text: this._state.profileState.currentPostText,
             likes: {
@@ -110,15 +117,42 @@ const store = {
             avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg'
         }
     
-        this._state.profileState.postsData.push(newPost);
+        posts.push(post);
         this._callSubscriber();
     },
 
     /**
-     * @description save new text post to state
+     * @description save new text of the post to state
+     * @param {String} text text of the message 
      */
     _changePostText(text)  {
         this._state.profileState.currentPostText = text;
+        this._callSubscriber();
+    },
+
+    /**
+     * @description save message to state
+     */
+    _addMessage() {
+        const messages = this._state.dialogsState.messagesInfo;
+        const text = this._state.dialogsState.currentMessageText;
+        const message = {
+            id:  Math.floor(Math.random()*1000000),
+            idUser: '',
+            messageInfo: {text},
+            avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg',
+            isMyMessage: true
+        };
+        
+        messages.push(message);
+        this._callSubscriber();
+    },
+
+    /**
+     * @description save new text of the message to state
+     */
+    _changeMessageText(text) {
+        this._state.dialogsState.currentMessageText = text;
         this._callSubscriber();
     },
 
@@ -144,6 +178,9 @@ const store = {
         switch(action.type) {
             case ADD_POST: return this._addPost();
             case UPDATE_NEW_POST_TEXT: return this._changePostText(action.text);
+
+            case ADD_MESSAGE: return this._addMessage();
+            case UPDATE_MESSAGE_TEXT: return this._changeMessageText(action.text);
 
             default: return null;
         }

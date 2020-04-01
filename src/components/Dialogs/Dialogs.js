@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './dialogs.module.scss';
+import {addMessageActionCreator, updateMessageTextActionCreator} from './../../redux/actionCreators';
 
 import User from './User';
 import Message from './Message';
@@ -10,14 +11,29 @@ import FormText from '../FormText';
  * @param {Array} usersInfo user information
  * @param {Array} messagesInfo users messages information
  */
-const Dialogs = ({usersInfo, messagesInfo}) => {
+const Dialogs = ({usersInfo, currentMessageText, messagesInfo, dispatch}) => {
     const messageCreateRef = React.createRef();
 
-    const sendMessage = event => {
+    /**
+     * @description send new message to state
+     */
+    const onSubmit = event => {
         event.preventDefault();
+        const actionNewMessage = addMessageActionCreator();
+        const actionChangeText = updateMessageTextActionCreator('');
+
+        dispatch(actionNewMessage);
+        dispatch(actionChangeText);
     };
-    const changeMessage = event => {
-        event.preventDefault();
+
+    /**
+     * @description send text message to state
+     */
+    const onChange = () => {
+        const text = messageCreateRef.current.value;
+        const action = updateMessageTextActionCreator(text);
+
+        dispatch(action);
     };
 
     const users = usersInfo.map(({id, name, avatar}) => (
@@ -47,9 +63,10 @@ const Dialogs = ({usersInfo, messagesInfo}) => {
                     {messages}
                 </ul>
                 <FormText textareaRef={messageCreateRef}
-                            onSubmit={sendMessage}
-                            onChange={changeMessage}
+                            onSubmit={onSubmit}
+                            onChange={onChange}
                             placeholder={'Write message...'}
+                            value={currentMessageText}
                             />
             </section>
         </div>

@@ -22,7 +22,7 @@ const App = ({appState : {profileState, dialogsState, navigationState}, dispatch
                 <Sidebar {...navigationState}/>
                 <main className={styles.app__content}>
                     <Route path="/profile" render={() => <Profile {...profileState} dispatch={dispatch}/>} />
-                    <Route path="/dialogs" render={() => <Dialogs {...dialogsState}/>} />
+                    <Route path="/dialogs" render={() => <Dialogs {...dialogsState} dispatch={dispatch}/>} />
                     <Route path="/news" />
                     <Route path="/musik"/>
                     <Route path="/settings" />
