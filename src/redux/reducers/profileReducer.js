@@ -3,7 +3,29 @@ import {
     UPDATE_NEW_POST_TEXT
 } from '../../constants';
 
-const profileReducer = (state, action) => {
+const initialState = {
+    currentPostText: '',
+    postsData: [
+        {
+            id: Math.floor(Math.random()*1000000),
+            text: 'I\'m good boy =)',
+            likes: {
+                count: 0
+            },
+            avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg'
+        },
+        {
+            id: Math.floor(Math.random()*1000000),
+            text: 'Wow wow',
+            likes: {
+                count: 0
+            },
+            avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg'
+        }
+    ]
+};
+
+const profileReducer = (state = initialState, action) => {
     /**
      * @description save new post to state
      */

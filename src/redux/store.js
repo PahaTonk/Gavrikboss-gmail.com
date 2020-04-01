@@ -90,7 +90,7 @@ const store = {
                 }
             ]
         },
-        navigationState: null,
+        navigationState: {},
     },
 
     /**
