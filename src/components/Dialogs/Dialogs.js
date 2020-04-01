@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './dialogs.module.scss';
-import {addMessageActionCreator, updateMessageTextActionCreator} from './../../redux/actionCreators';
+import {addMessageActionCreator, updateMessageTextActionCreator} from './../../redux/reducers/dialogsReducer';
 
 import User from './User';
 import Message from './Message';

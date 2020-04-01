@@ -1,9 +1,6 @@
-import {
-    ADD_POST,
-    UPDATE_NEW_POST_TEXT,
-    ADD_MESSAGE,
-    UPDATE_MESSAGE_TEXT
-} from '../constants';
+import profileReducer from "./reducers/profileReducer";
+import dialogsReducer from "./reducers/dialogsReducer";
+import navigationReducer from "./reducers/navigationReducer";
 
 const store = {
     _state: {
@@ -104,59 +101,6 @@ const store = {
     },
 
     /**
-     * @description save new post to state
-     */
-    _addPost() {
-        const posts = this._state.profileState.postsData;
-        const post = {
-            id: Math.floor(Math.random()*1000000),
-            text: this._state.profileState.currentPostText,
-            likes: {
-                count: 0
-            },
-            avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg'
-        }
-    
-        posts.push(post);
-        this._callSubscriber();
-    },
-
-    /**
-     * @description save new text of the post to state
-     * @param {String} text text of the message 
-     */
-    _changePostText(text)  {
-        this._state.profileState.currentPostText = text;
-        this._callSubscriber();
-    },
-
-    /**
-     * @description save message to state
-     */
-    _addMessage() {
-        const messages = this._state.dialogsState.messagesInfo;
-        const text = this._state.dialogsState.currentMessageText;
-        const message = {
-            id:  Math.floor(Math.random()*1000000),
-            idUser: '',
-            messageInfo: {text},
-            avatar: 'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg',
-            isMyMessage: true
-        };
-        
-        messages.push(message);
-        this._callSubscriber();
-    },
-
-    /**
-     * @description save new text of the message to state
-     */
-    _changeMessageText(text) {
-        this._state.dialogsState.currentMessageText = text;
-        this._callSubscriber();
-    },
-
-    /**
      * @description get current state
      */
     get state () {
@@ -175,15 +119,11 @@ const store = {
      * @param {Object} action save event and data
      */
     dispatch(action) {
-        switch(action.type) {
-            case ADD_POST: return this._addPost();
-            case UPDATE_NEW_POST_TEXT: return this._changePostText(action.text);
+        this._state.profileState = profileReducer(this._state.profileState, action);
+        this._state.dialogsState = dialogsReducer(this._state.dialogsState, action);
+        this._state.navigationState = navigationReducer(this._state.navigationState, action);
 
-            case ADD_MESSAGE: return this._addMessage();
-            case UPDATE_MESSAGE_TEXT: return this._changeMessageText(action.text);
-
-            default: return null;
-        }
+        this._callSubscriber();
     },
     
     /**

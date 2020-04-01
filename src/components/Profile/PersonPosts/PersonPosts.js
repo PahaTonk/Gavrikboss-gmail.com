@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styles from './../profile.module.scss';
-import {addPostActionCreator, updateNewPostTextActionCreator} from './../../../redux/actionCreators';
+import {addPostActionCreator, updateNewPostTextActionCreator} from './../../../redux/reducers/profileReducer';
 
 import Posts from './Post';
 import FormText from '../../FormText';
