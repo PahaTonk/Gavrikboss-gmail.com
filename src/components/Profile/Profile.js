@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
+import PersonPostsContainer from './PersonPosts/PersonPostsContainer';
 import styles from './profile.module.scss';
-
-import PersonPosts from './PersonPosts';
 import ProfileInfo from './ProfileInfo';
 
 /**
@@ -14,7 +13,7 @@ const Profile = (props) => {
                 <ProfileInfo />
             </section>
             <section className={`profile__bottom ${styles.posts}`}>
-                <PersonPosts {...props}/>
+                <PersonPostsContainer {...props}/>
             </section>
         </Fragment>
     );

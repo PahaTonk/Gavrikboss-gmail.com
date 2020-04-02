@@ -9,7 +9,6 @@ const reducers = combineReducers({
     navigationState: navigationReducer
 });
 
-
 const store = createStore(reducers);
 
 export default store;

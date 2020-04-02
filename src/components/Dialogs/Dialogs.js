@@ -1,17 +1,20 @@
 import React from 'react';
-import styles from './dialogs.module.scss';
-import {addMessageActionCreator, updateMessageTextActionCreator} from './../../redux/reducers/dialogsReducer';
-
-import User from './User';
-import Message from './Message';
 import FormText from '../FormText';
+import styles from './dialogs.module.scss';
+import Message from './Message';
+import User from './User';
 
 /**
  * @description dialogs page
  * @param {Array} usersInfo user information
+ * @param {Array} currentMessageText current message text in textarea
  * @param {Array} messagesInfo users messages information
+ * @param {Function} addMessage callback, adding new message
+ * @param {Function} updateMessageText callback, saving new text in the textarea
  */
-const Dialogs = ({usersInfo, currentMessageText, messagesInfo, dispatch}) => {
+const Dialogs = (props) => {
+    const {usersInfo, currentMessageText, messagesInfo} = props;
+    const {addMessage, updateMessageText} = props;
     const messageCreateRef = React.createRef();
 
     /**
@@ -19,11 +22,8 @@ const Dialogs = ({usersInfo, currentMessageText, messagesInfo, dispatch}) => {
      */
     const onSubmit = event => {
         event.preventDefault();
-        const actionNewMessage = addMessageActionCreator();
-        const actionChangeText = updateMessageTextActionCreator('');
-
-        dispatch(actionNewMessage);
-        dispatch(actionChangeText);
+        addMessage();
+        updateMessageText('');
     };
 
     /**
@@ -31,9 +31,7 @@ const Dialogs = ({usersInfo, currentMessageText, messagesInfo, dispatch}) => {
      */
     const onChange = () => {
         const text = messageCreateRef.current.value;
-        const action = updateMessageTextActionCreator(text);
-
-        dispatch(action);
+        updateMessageText(text);
     };
 
     const users = usersInfo.map(({id, name, avatar}) => (
@@ -41,6 +39,7 @@ const Dialogs = ({usersInfo, currentMessageText, messagesInfo, dispatch}) => {
             <User linkId={id} avatar={avatar} name={name}/>
         </li>
     ));
+
     const messages = messagesInfo.map(({id, isMyMessage, ...rest}) => {
         const leftMessage = isMyMessage ? '' : styles.messages__itemWrapper_left
         return (

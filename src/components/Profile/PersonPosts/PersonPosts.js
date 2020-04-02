@@ -1,17 +1,18 @@
 import React, { Fragment } from 'react';
-import styles from './../profile.module.scss';
-import {addPostActionCreator, updateNewPostTextActionCreator} from './../../../redux/reducers/profileReducer';
-
-import Posts from './Post';
 import FormText from '../../FormText';
+import styles from './../profile.module.scss';
+import Posts from './Post';
 
 /**
  * @description profile component, creates and shows user posts
  * @param {Array} currentPostText current text for textarea
  * @param {Array} postsData saved posts list
- * @param {Function} dispatch callback, check actions
+ * @param {Function} addPost callback, adding new post
+ * @param {Function} updateNewPostText callback, saving new text in the textarea
  */
-const PersonPosts = ({currentPostText, postsData, dispatch}) => {
+const PersonPosts = (props) => {
+    const {currentPostText, postsData} = props;
+    const {addPost, updateNewPostText} = props;
     const postCreateRef = React.createRef();
     
     /**
@@ -19,11 +20,8 @@ const PersonPosts = ({currentPostText, postsData, dispatch}) => {
      */
     const onSubmit = event => {
         event.preventDefault();
-        const addPostAction = addPostActionCreator();
-        const updateTextPostAction = updateNewPostTextActionCreator('');
-
-        dispatch(addPostAction);
-        dispatch(updateTextPostAction);
+        addPost();
+        updateNewPostText('');
     };
 
     /**
@@ -31,9 +29,7 @@ const PersonPosts = ({currentPostText, postsData, dispatch}) => {
      */
     const onChange = () => {
         const text = postCreateRef.current.value;
-        const updateTextPostAction = updateNewPostTextActionCreator(text);
-
-        dispatch(updateTextPostAction);
+        updateNewPostText(text);
     };
 
     const posts = postsData.map(({id, ...postData}) => (

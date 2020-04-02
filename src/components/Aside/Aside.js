@@ -6,8 +6,11 @@ import Friend from './Friend';
 
 /**
  * @description navigation panel(left column)
+ * @param {Array} currentPostText list of friends
  */
-const Aside = ({friendsInfo}) => {
+const Aside = (props) => {
+    const {friendsInfo} = props;
+    
     const friends = friendsInfo.map(({id, ...rest}) => (
         <li key={id}>
             <Friend id={id} {...rest}/>

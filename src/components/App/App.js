@@ -1,28 +1,24 @@
-import React, { Fragment } from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import AsideContainer from '../Aside/AsideContainer';
+import DialogsContainer from '../Dialogs/DialogsContainer';
+import Header from '../Header';
+import Profile from '../Profile';
 import styles from './app.module.scss';
 
-import Header from '../Header';
-import Sidebar from '../Aside';
-import Profile from '../Profile';
-import Dialogs from '../Dialogs';
 
 /**
  * @description entry point in app
- * @param {Object} profileState current state profile page
- * @param {Object} dialogsState current state dialog page
- * @param {Object} navigationState current state aside panel
- * @param {Function} dispatch callback, check actions
  */
-const App = ({appState : {profileState, dialogsState, navigationState}, dispatch}) => {
+const App = ({store}) => {
     return (
         <BrowserRouter>
             <div className={styles.app}>
                 <Header />
-                <Sidebar {...navigationState}/>
+                <AsideContainer store={store}/>
                 <main className={styles.app__content}>
-                    <Route path="/profile" render={() => <Profile {...profileState} dispatch={dispatch}/>} />
-                    <Route path="/dialogs" render={() => <Dialogs {...dialogsState} dispatch={dispatch}/>} />
+                    <Route path="/profile" render={() => <Profile store={store}/>} />
+                    <Route path="/dialogs" render={() => <DialogsContainer store={store}/>} />
                     <Route path="/news" />
                     <Route path="/musik"/>
                     <Route path="/settings" />
