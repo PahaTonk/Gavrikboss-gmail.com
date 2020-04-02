@@ -10,51 +10,50 @@ import Posts from './Post';
  * @param {Function} addPost callback, adding new post
  * @param {Function} updateNewPostText callback, saving new text in the textarea
  */
-const PersonPosts = (props) => {
-    const {currentPostText, postsData} = props;
-    const {addPost, updateNewPostText} = props;
-    const postCreateRef = React.createRef();
-    
-    /**
-     * @description send new post to state
-     */
-    const onSubmit = event => {
-        event.preventDefault();
-        addPost();
-        updateNewPostText('');
-    };
+const PersonPosts = props => {
+	const { currentPostText, postsData } = props;
+	const { addPost, updateNewPostText } = props;
+	const postCreateRef = React.createRef();
 
-    /**
-     * @description send text new post to state
-     */
-    const onChange = () => {
-        const text = postCreateRef.current.value;
-        updateNewPostText(text);
-    };
+	/**
+	 * @description send new post to state
+	 */
+	const onSubmit = event => {
+		event.preventDefault();
+		addPost();
+		updateNewPostText('');
+	};
 
-    const posts = postsData.map(({id, ...postData}) => (
-        <li key={id} className={`${styles.posts__item} list__item`}>
-            <Posts {...postData}/>
-        </li>
-    ));
+	/**
+	 * @description send text new post to state
+	 */
+	const onChange = () => {
+		const text = postCreateRef.current.value;
+		updateNewPostText(text);
+	};
 
-    return (
-        <Fragment>
-            <div className={styles.posts__top}>
-                <FormText textareaRef={postCreateRef}
-                            onSubmit={onSubmit}
-                            onChange={onChange}
-                            placeholder={'Write posts...'}
-                            value={currentPostText}
-                            />
-            </div>
-            <div className="posts__bottom">
-                <ul className={`${styles.posts__list} list`}>
-                    {posts}
-                </ul>
-            </div>
-        </Fragment>
-    );
+	const posts = postsData.map(({ id, ...postData }) => (
+		<li key={id} className={`${styles.posts__item} list__item`}>
+			<Posts {...postData} />
+		</li>
+	));
+
+	return (
+		<Fragment>
+			<div className={styles.posts__top}>
+				<FormText
+					textareaRef={postCreateRef}
+					onSubmit={onSubmit}
+					onChange={onChange}
+					placeholder={'Write posts...'}
+					value={currentPostText}
+				/>
+			</div>
+			<div className='posts__bottom'>
+				<ul className={`${styles.posts__list} list`}>{posts}</ul>
+			</div>
+		</Fragment>
+	);
 };
 
 export default PersonPosts;

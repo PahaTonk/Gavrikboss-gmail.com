@@ -1,69 +1,69 @@
 @import-normalize;
 
 * {
-  outline: none;
-  box-sizing: border-box;
+	outline: none;
+	box-sizing: border-box;
 }
 
 html {
-  background-color: #f5f6f6;
+	background-color: #f5f6f6;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 .image {
-  width: auto;
-  height: auto;
-  max-width: 100%;
+	width: auto;
+	height: auto;
+	max-width: 100%;
 }
 
 .list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 
-  &__item {
-    text-decoration: none;
-    color: #000000;
-  }
+	&__item {
+		text-decoration: none;
+		color: #000000;
+	}
 }
 
 .list {
-  &__item {
-    color: #000000;
-    transition: 150ms;
+	&__item {
+		color: #000000;
+		transition: 150ms;
 
-    &:hover {
-      background-color: #58788a;
-    }
+		&:hover {
+			background-color: #58788a;
+		}
 
-    &:hover,
-    &:hover .button {
-      color: #ffffff;
-    }
+		&:hover,
+		&:hover .button {
+			color: #ffffff;
+		}
 
-    &_active {
-      background-color: #58788a;
-      color: #ffffff;
-    }
-  }
+		&_active {
+			background-color: #58788a;
+			color: #ffffff;
+		}
+	}
 }
 
 .button {
-  border: 0;
-  background: none;
-  transition: 150ms;
-  cursor: pointer;
+	border: 0;
+	background: none;
+	transition: 150ms;
+	cursor: pointer;
 }

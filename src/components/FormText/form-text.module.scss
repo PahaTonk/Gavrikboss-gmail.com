@@ -1,25 +1,25 @@
 @import './../../helpers/variables.scss';
 
 .form {
-    @extend %flex-column;
-    width: 100%;
-    align-items: flex-end;
+	@extend %flex-column;
+	width: 100%;
+	align-items: flex-end;
 
-    &__textarea {
-        width: 100%;
-        padding: 10px 15px;
-        border-radius: 15px;
-        border: $main_border;
-    }
+	&__textarea {
+		width: 100%;
+		padding: 10px 15px;
+		border-radius: 15px;
+		border: $main_border;
+	}
 
-    &__send {
-        width: 100px;
-        padding: 10px 15px;
-        border-radius: 15px;
-        border: $main_border;
-        background-color: $main_color;
-        color: $white;
-        cursor: pointer;
-        margin-top: 15px;
-    }
+	&__send {
+		width: 100px;
+		padding: 10px 15px;
+		border-radius: 15px;
+		border: $main_border;
+		background-color: $main_color;
+		color: $white;
+		cursor: pointer;
+		margin-top: 15px;
+	}
 }

@@ -4,10 +4,12 @@ import Aside from './Aside';
 /**
  * @description navigation panel(left column)
  */
-const AsideContainer = ({store, ...rest}) => {
-    const {navigationState : {friendsInfo}} = store.getState();
+const AsideContainer = ({ store, ...rest }) => {
+	const {
+		navigationState: { friendsInfo },
+	} = store.getState();
 
-    return <Aside friendsInfo={friendsInfo} {...rest}/>
+	return <Aside friendsInfo={friendsInfo} {...rest} />;
 };
 
 export default AsideContainer;

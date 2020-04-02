@@ -1,3 +1,3 @@
-import FormText from "./FormText";
+import FormText from './FormText';
 
 export default FormText;

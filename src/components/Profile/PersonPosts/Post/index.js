@@ -1,3 +1,3 @@
-import Posts from "./Post";
+import Posts from './Post';
 
 export default Posts;

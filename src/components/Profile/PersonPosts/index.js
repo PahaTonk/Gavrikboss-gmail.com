@@ -1,3 +1,3 @@
-import PersonPosts from "./PersonPosts";
+import PersonPosts from './PersonPosts';
 
 export default PersonPosts;
