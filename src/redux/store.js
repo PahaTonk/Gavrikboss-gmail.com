@@ -130,15 +130,15 @@ const store = {
 	dispatch(action) {
 		this._state.profileState = profileReducer(
 			this._state.profileState,
-			action
+			action,
 		);
 		this._state.dialogsState = dialogsReducer(
 			this._state.dialogsState,
-			action
+			action,
 		);
 		this._state.navigationState = navigationReducer(
 			this._state.navigationState,
-			action
+			action,
 		);
 
 		this._callSubscriber();
@@ -150,7 +150,7 @@ const store = {
 	initState() {
 		this._state.navigationState = {
 			friendsInfo: this._state.dialogsState.usersInfo.filter(
-				user => user.friend
+				user => user.friend,
 			),
 		};
 	},

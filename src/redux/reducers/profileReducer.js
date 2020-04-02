@@ -25,14 +25,16 @@ const initialState = {
 };
 
 const profileReducer = (state = initialState, action) => {
+	let _state = { ...state };
+
 	/**
 	 * @description save new post to state
 	 */
 	const addPost = () => {
-		const posts = state.postsData;
+		const postsData = [..._state.postsData];
 		const post = {
 			id: Math.floor(Math.random() * 1000000),
-			text: state.currentPostText,
+			text: _state.currentPostText,
 			likes: {
 				count: 0,
 			},
@@ -40,14 +42,16 @@ const profileReducer = (state = initialState, action) => {
 				'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg',
 		};
 
-		posts.unshift(post);
+		postsData.unshift(post);
+
+		_state = { ..._state, postsData };
 	};
 
 	/**
 	 * @description save new text of the post to state
 	 * @param {String} text text of the message
 	 */
-	const changePostText = text => (state.currentPostText = text);
+	const changePostText = text => (_state.currentPostText = text);
 
 	switch (action.type) {
 		case ADD_POST:
@@ -62,7 +66,7 @@ const profileReducer = (state = initialState, action) => {
 			break;
 	}
 
-	return state;
+	return _state;
 };
 
 export const addPostActionCreator = () => ({ type: ADD_POST });

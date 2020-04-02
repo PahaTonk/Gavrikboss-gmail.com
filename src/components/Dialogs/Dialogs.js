@@ -1,4 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {
+	addMessageActionCreator,
+	updateMessageTextActionCreator,
+} from '../../redux/reducers/dialogsReducer';
 import FormText from '../FormText';
 import styles from './dialogs.module.scss';
 import Message from './Message';
@@ -74,4 +79,31 @@ const Dialogs = props => {
 	);
 };
 
-export default Dialogs;
+const mapStateToProps = state => {
+	const {
+		dialogsState: { usersInfo, currentMessageText, messagesInfo },
+	} = state;
+
+	return {
+		usersInfo,
+		currentMessageText,
+		messagesInfo,
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		addMessage: () => {
+			const actionNewMessage = addMessageActionCreator();
+
+			dispatch(actionNewMessage);
+		},
+		updateMessageText: text => {
+			const action = updateMessageTextActionCreator(text);
+
+			dispatch(action);
+		},
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dialogs);

@@ -74,12 +74,14 @@ const initialState = {
 };
 
 const dialogsReducer = (state = initialState, action) => {
+	let _state = { ...state };
+
 	/**
 	 * @description save message to state
 	 */
 	const addMessage = () => {
-		const messages = state.messagesInfo;
-		const text = state.currentMessageText;
+		const messagesInfo = [..._state.messagesInfo];
+		const text = _state.currentMessageText;
 		const message = {
 			id: Math.floor(Math.random() * 1000000),
 			idUser: '',
@@ -89,13 +91,15 @@ const dialogsReducer = (state = initialState, action) => {
 			isMyMessage: true,
 		};
 
-		messages.push(message);
+		messagesInfo.push(message);
+
+		_state = { ..._state, messagesInfo };
 	};
 
 	/**
 	 * @description save new text of the message to state
 	 */
-	const changeMessageText = text => (state.currentMessageText = text);
+	const changeMessageText = text => (_state.currentMessageText = text);
 
 	switch (action.type) {
 		case ADD_MESSAGE:
@@ -110,7 +114,7 @@ const dialogsReducer = (state = initialState, action) => {
 			break;
 	}
 
-	return state;
+	return _state;
 };
 
 export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });

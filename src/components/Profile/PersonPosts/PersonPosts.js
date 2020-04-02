@@ -1,5 +1,10 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import FormText from '../../FormText';
+import {
+	addPostActionCreator,
+	updateNewPostTextActionCreator,
+} from './../../../redux/reducers/profileReducer';
 import styles from './../profile.module.scss';
 import Posts from './Post';
 
@@ -56,4 +61,30 @@ const PersonPosts = props => {
 	);
 };
 
-export default PersonPosts;
+const mapStateToProps = state => {
+	const {
+		profileState: { postsData, currentPostText },
+	} = state;
+
+	return {
+		postsData,
+		currentPostText,
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		addPost: () => {
+			const addPostAction = addPostActionCreator();
+
+			dispatch(addPostAction);
+		},
+		updateNewPostText: text => {
+			const updateTextPostAction = updateNewPostTextActionCreator(text);
+
+			dispatch(updateTextPostAction);
+		},
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonPosts);

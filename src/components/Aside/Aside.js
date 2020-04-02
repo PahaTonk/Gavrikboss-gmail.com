@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import styles from './aside.module.scss';
 import appStyles from './../App/app.module.scss';
+import styles from './aside.module.scss';
 import Friend from './Friend';
 
 /**
@@ -80,4 +81,16 @@ const Aside = props => {
 	);
 };
 
-export default Aside;
+const mapStateToProps = state => {
+	const {
+		navigationState: { friendsInfo },
+	} = state;
+
+	return {
+		friendsInfo,
+	};
+};
+
+const mapDispatchToProps = () => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Aside);

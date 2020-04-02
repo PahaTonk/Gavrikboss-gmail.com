@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import AsideContainer from '../Aside/AsideContainer';
-import DialogsContainer from '../Dialogs/DialogsContainer';
+import Aside from '../Aside';
+import Dialogs from '../Dialogs';
 import Header from '../Header';
 import Profile from '../Profile';
 import styles from './app.module.scss';
@@ -9,21 +9,15 @@ import styles from './app.module.scss';
 /**
  * @description entry point in app
  */
-const App = ({ store }) => {
+const App = () => {
 	return (
 		<BrowserRouter>
 			<div className={styles.app}>
 				<Header />
-				<AsideContainer store={store} />
+				<Aside />
 				<main className={styles.app__content}>
-					<Route
-						path='/profile'
-						render={() => <Profile store={store} />}
-					/>
-					<Route
-						path='/dialogs'
-						render={() => <DialogsContainer store={store} />}
-					/>
+					<Route path='/profile' render={() => <Profile />} />
+					<Route path='/dialogs' render={() => <Dialogs />} />
 					<Route path='/news' />
 					<Route path='/musik' />
 					<Route path='/settings' />
