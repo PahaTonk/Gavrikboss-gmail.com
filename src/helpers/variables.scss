@@ -11,3 +11,9 @@ $main_border: 1px solid #e7e8e9;
 	display: flex;
 	justify-content: $justify-content;
 }
+
+
+@mixin avatar($size: 50px) {
+	width: $size;
+	height: $size;
+}

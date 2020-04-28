@@ -1,4 +1,4 @@
-@import './../../helpers/variables.scss';
+@import './../../../helpers/variables.scss';
 
 .form {
 	@extend %flex-column;
@@ -14,12 +14,6 @@
 
 	&__send {
 		width: 100px;
-		padding: 10px 15px;
-		border-radius: 15px;
-		border: $main_border;
-		background-color: $main_color;
-		color: $white;
-		cursor: pointer;
 		margin-top: 15px;
 	}
 }

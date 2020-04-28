@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './../dialogs.module.scss';
+import Avatar from '../../small-components/Avatar';
 
 /**
  * @description dialog page
@@ -15,9 +16,8 @@ const User = ({ linkId, avatar, name }) => {
 			activeClassName='list__item_active'
 			to={`/dialogs/${linkId}`}
 		>
-			<div className={styles.users__ava}>
-				<img src={avatar} className='image' alt={name} />
-			</div>
+			<Avatar avatar={avatar} name={name} classes={styles.users__ava}/>
+
 			<div className={styles.users__info}>
 				<h3 className='users__name'>{name}</h3>
 			</div>

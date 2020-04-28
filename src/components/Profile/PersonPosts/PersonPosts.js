@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import FormText from '../../FormText';
+import FormText from '../../small-components/FormText';
 import {
 	addPostActionCreator,
 	updateNewPostTextActionCreator,
@@ -16,7 +16,7 @@ import Posts from './Post';
  * @param {Function} updateNewPostText callback, saving new text in the textarea
  */
 const PersonPosts = props => {
-	const { currentPostText, postsData } = props;
+	const { currentPostText, postsData, avatar, name } = props;
 	const { addPost, updateNewPostText } = props;
 	const postCreateRef = React.createRef();
 
@@ -39,7 +39,7 @@ const PersonPosts = props => {
 
 	const posts = postsData.map(({ id, ...postData }) => (
 		<li key={id} className={`${styles.posts__item} list__item`}>
-			<Posts {...postData} />
+			<Posts avatar={avatar} name={name} {...postData} />
 		</li>
 	));
 
@@ -63,12 +63,14 @@ const PersonPosts = props => {
 
 const mapStateToProps = state => {
 	const {
-		profileState: { postsData, currentPostText },
+		profileState: { postsData, currentPostText, avatar, name },
 	} = state;
 
 	return {
 		postsData,
 		currentPostText,
+		avatar,
+		name,
 	};
 };
 

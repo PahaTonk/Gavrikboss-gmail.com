@@ -66,6 +66,16 @@ const Aside = props => {
 								className={`list__item ${styles.navigation__link}`}
 								activeClassName='list__item_active'
 								exact
+								to='/find-users'
+							>
+								Find Users
+							</NavLink>
+						</li>
+						<li className={styles.navigation__item}>
+							<NavLink
+								className={`list__item ${styles.navigation__link}`}
+								activeClassName='list__item_active'
+								exact
 								to='/settings'
 							>
 								Settings

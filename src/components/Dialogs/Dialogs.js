@@ -4,7 +4,7 @@ import {
 	addMessageActionCreator,
 	updateMessageTextActionCreator,
 } from '../../redux/reducers/dialogsReducer';
-import FormText from '../FormText';
+import FormText from '../small-components/FormText';
 import styles from './dialogs.module.scss';
 import Message from './Message';
 import User from './User';
@@ -28,7 +28,6 @@ const Dialogs = props => {
 	const onSubmit = event => {
 		event.preventDefault();
 		addMessage();
-		updateMessageText('');
 	};
 
 	/**

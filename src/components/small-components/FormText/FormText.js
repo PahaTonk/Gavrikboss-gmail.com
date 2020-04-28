@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './form-text.module.scss';
+import Button from '../Button';
 
 /**
  * @description component for send data
@@ -19,7 +20,7 @@ const FormText = ({ onSubmit, onChange, textareaRef, placeholder, value }) => {
 				ref={textareaRef}
 				value={value}
 			/>
-			<input className={styles.form__send} type='submit' value='Send' />
+			<Button type='submit' text='Send' classes={styles.form__send}/>
 		</form>
 	);
 };

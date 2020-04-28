@@ -5,6 +5,11 @@ const initialState = {
 		{
 			id: 'vatson',
 			name: 'Dog Vatson',
+			status: 'I like ball',
+			location: {
+				city: 'Minsk',
+				country: 'Belarus',
+			},
 			friend: true,
 			avatar:
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQITmE6hyq7RBxa8T7OiAHftxOEph097nZf2UxDr44mjhovGKxI',
@@ -12,19 +17,34 @@ const initialState = {
 		{
 			id: 'harry',
 			name: 'Cat Harry',
+			status: 'Viskas is fantastic',
+			location: {
+				city: 'Kiyv',
+				country: 'Ukraine',
+			},
 			friend: false,
 			avatar:
 				'https://cs8.pikabu.ru/post_img/big/2017/02/10/8/1486732859195522448.jpg',
 		},
 		{
-			id: 'jocker',
+			id: 'Joker',
 			name: 'Dog Jocker',
+			status: 'Wow wow ',
+			location: {
+				city: 'Minsk',
+				country: 'Belarus',
+			},
 			friend: true,
 			avatar: 'https://i.forfun.com/j9k4l5lc.jpeg',
 		},
 		{
 			id: 'zord',
 			name: 'Dog Zord',
+			status: "I'm crazy boy",
+			location: {
+				city: 'London',
+				country: 'UK',
+			},
 			friend: true,
 			avatar:
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUsXCljibokfNvJV6UKn6xBUdqLLvGy50eA2pd0saYGVfD1A2r',
@@ -80,6 +100,7 @@ const dialogsReducer = (state = initialState, action) => {
 	 * @description save message to state
 	 */
 	const addMessage = () => {
+		const currentMessageText = '';
 		const messagesInfo = [..._state.messagesInfo];
 		const text = _state.currentMessageText;
 		const message = {
@@ -93,7 +114,7 @@ const dialogsReducer = (state = initialState, action) => {
 
 		messagesInfo.push(message);
 
-		_state = { ..._state, messagesInfo };
+		_state = { ..._state, messagesInfo, currentMessageText };
 	};
 
 	/**

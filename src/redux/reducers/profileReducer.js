@@ -2,24 +2,25 @@ import { ADD_POST, UPDATE_NEW_POST_TEXT } from '../../constants';
 
 const initialState = {
 	currentPostText: '',
+	avatar:
+		'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg',
+	name: 'Dog Jack',
+	age: 3,
+	status: 'Wow...',
 	postsData: [
 		{
 			id: Math.floor(Math.random() * 1000000),
 			text: "I'm good boy =)",
 			likes: {
 				count: 0,
-			},
-			avatar:
-				'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg',
+			}
 		},
 		{
 			id: Math.floor(Math.random() * 1000000),
 			text: 'Wow wow',
 			likes: {
 				count: 0,
-			},
-			avatar:
-				'https://telegraf.com.ua/files/2019/01/milye-i-ocharovatelnye-shhekastye-pyosiki-5.jpg',
+			}
 		},
 	],
 };
@@ -32,6 +33,7 @@ const profileReducer = (state = initialState, action) => {
 	 */
 	const addPost = () => {
 		const postsData = [..._state.postsData];
+		const currentPostText = '';
 		const post = {
 			id: Math.floor(Math.random() * 1000000),
 			text: _state.currentPostText,
@@ -44,7 +46,7 @@ const profileReducer = (state = initialState, action) => {
 
 		postsData.unshift(post);
 
-		_state = { ..._state, postsData };
+		_state = { ..._state, postsData, currentPostText };
 	};
 
 	/**

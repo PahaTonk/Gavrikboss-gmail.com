@@ -1,0 +1,10 @@
+@import './../../../helpers/variables.scss';
+
+.buttonDefault {
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: $main_border;
+    background-color: $main_color;
+    color: $white;
+    cursor: pointer;
+}

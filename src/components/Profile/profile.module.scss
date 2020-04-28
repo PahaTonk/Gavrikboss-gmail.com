@@ -16,12 +16,10 @@
 	}
 
 	&__ava {
-		flex-basis: 150px;
+		@include avatar(150px);
+
 		display: flex;
 		align-items: flex-end;
-		height: 150px;
-		border-radius: 50%;
-		overflow: hidden;
 	}
 
 	&__info {
@@ -59,11 +57,10 @@
 	}
 
 	&__ava {
-		height: 50px;
+		@include avatar(50px);
+
 		display: flex;
 		align-items: flex-end;
-		border-radius: 50%;
-		overflow: hidden;
 	}
 
 	&__text {

@@ -5,6 +5,7 @@ import Dialogs from '../Dialogs';
 import Header from '../Header';
 import Profile from '../Profile';
 import styles from './app.module.scss';
+import FindUsers from '../FindUsers';
 
 /**
  * @description entry point in app
@@ -20,6 +21,7 @@ const App = () => {
 					<Route path='/dialogs' render={() => <Dialogs />} />
 					<Route path='/news' />
 					<Route path='/musik' />
+					<Route path='/find-users' render={() => <FindUsers />} />
 					<Route path='/settings' />
 				</main>
 			</div>
