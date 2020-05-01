@@ -8,7 +8,6 @@ import FormText from '../small-components/FormText';
 import styles from './dialogs.module.scss';
 import Message from './Message';
 import User from './User';
-import { functionForDispatch } from '../../helpers/defaultFunctions';
 
 /**
  * @description dialogs page
@@ -91,11 +90,9 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		addMessage: functionForDispatch(dispatch, addMessageAC),
-		updateMessageText: functionForDispatch(dispatch, updateMessageTextAC),
-	};
+const mapDispatchToProps = {
+	addMessage: addMessageAC,
+	updateMessageText: updateMessageTextAC,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dialogs);

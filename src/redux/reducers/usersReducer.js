@@ -5,6 +5,7 @@ import {
     CHANGE_CURRENT_PAGE,
     SET_PAGE_SIZE,
     SET_TOTAL_COUNT,
+    FETCHING_USERS,
 } from '../../constants';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
     pageSize: 1,
     total: 1,
     currentPage: 1,
+    isFetching: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -55,6 +57,13 @@ const usersReducer = (state = initialState, action) => {
         };
     };
 
+    const changeFetching = toggle => {
+        _state = {
+            ..._state,
+            isFetching: toggle,
+        };
+    };
+
     switch (action.type) {
         case FOLLOW:
             followingManagement(action.userId, true);
@@ -80,6 +89,10 @@ const usersReducer = (state = initialState, action) => {
             setUsers(action.users);
             break;
 
+        case FETCHING_USERS:
+            changeFetching(action.toggle);
+            break;
+
         default:
             break;
     }
@@ -98,6 +111,10 @@ export const setTotalSizeAC = total => ({ type: SET_TOTAL_COUNT, total });
 export const setUsersAC = users => ({
     type: SET_USERS,
     users,
+});
+export const changeFetchingAC = toggle => ({
+    type: FETCHING_USERS,
+    toggle,
 });
 
 export default usersReducer;

@@ -7,7 +7,6 @@ import {
 } from './../../../redux/reducers/profileReducer';
 import styles from './../profile.module.scss';
 import Posts from './Post';
-import { functionForDispatch } from '../../../helpers/defaultFunctions';
 
 /**
  * @description profile component, creates and shows user posts
@@ -75,11 +74,9 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		addPost: functionForDispatch(dispatch, addPostAC),
-		updateNewPostText: functionForDispatch(dispatch, updateNewPostTextAC),
-	};
+const mapDispatchToProps = {
+	addPost: addPostAC,
+	updateNewPostText: updateNewPostTextAC,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonPosts);

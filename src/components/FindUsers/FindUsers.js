@@ -7,6 +7,7 @@ import {
     changeCurrentPageAC,
     setPageSizeAC,
     setTotalSizeAC,
+    changeFetchingAC,
 } from '../../redux/reducers/usersReducer';
 import styles from './find-users.module.scss';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -15,7 +16,6 @@ import User from './User';
 import * as axios from 'axios';
 import Loader from 'react-loader-spinner';
 import Pagination from '../small-components/Pagination';
-import { functionForDispatch } from '../../helpers/defaultFunctions';
 import { MAIN_COLOR } from '../../constants';
 
 /**
@@ -26,9 +26,17 @@ import { MAIN_COLOR } from '../../constants';
  */
 class FindUsers extends Component {
     async componentDidMount() {
-        const { users, setUsers, setPageSize, setTotalSize } = this.props;
+        const {
+            users,
+            setUsers,
+            setPageSize,
+            setTotalSize,
+            changeFetching,
+        } = this.props;
 
         if (users.length) return;
+
+        changeFetching(true);
 
         try {
             const { data } = await axios.get('/users1.json');
@@ -36,6 +44,21 @@ class FindUsers extends Component {
             setUsers(data.users);
             setPageSize(data.pageSize);
             setTotalSize(data.total);
+            changeFetching(false);
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async componentWillUnmount() {
+        const { setUsers, changeCurrentPage, changeFetching } = this.props;
+
+        try {
+            const { data } = await axios.get('/users1.json');
+
+            setUsers(data.users);
+            changeCurrentPage(1);
+            changeFetching(false);
         } catch (error) {
             throw new Error(error);
         }
@@ -57,7 +80,9 @@ class FindUsers extends Component {
      * @param {Number} currentPage
      */
     paginationManagement = async currentPage => {
-        const { setUsers, changeCurrentPage } = this.props;
+        const { setUsers, changeCurrentPage, changeFetching } = this.props;
+
+        changeFetching(true);
 
         try {
             const {
@@ -66,14 +91,14 @@ class FindUsers extends Component {
 
             setUsers(users);
             changeCurrentPage(currentPage);
+            changeFetching(false);
         } catch (error) {
             throw new Error(error);
         }
     };
 
     render() {
-        const { users, pageSize, total, currentPage } = this.props;
-        const isEmptyUsers = !users.length;
+        const { users, pageSize, total, currentPage, isFetching } = this.props;
         const pagesCount = Math.ceil(+total / +pageSize);
         const usersList = users.map(user => (
             <User
@@ -85,7 +110,7 @@ class FindUsers extends Component {
 
         return (
             <section className={`${styles.users} list`}>
-                {isEmptyUsers ? (
+                {isFetching ? (
                     <Loader type='Circles' color={MAIN_COLOR} />
                 ) : (
                     <Fragment>
@@ -106,19 +131,20 @@ class FindUsers extends Component {
 
 const mapStateToProps = state => {
     const {
-        usersState: { users, pageSize, total, currentPage },
+        usersState: { users, pageSize, total, currentPage, isFetching },
     } = state;
 
-    return { users, pageSize, total, currentPage };
+    return { users, pageSize, total, currentPage, isFetching };
 };
 
-const mapDispatchToProps = dispatch => ({
-    follow: functionForDispatch(dispatch, followAC),
-    unfollow: functionForDispatch(dispatch, unfollowAC),
-    changeCurrentPage: functionForDispatch(dispatch, changeCurrentPageAC),
-    setPageSize: functionForDispatch(dispatch, setPageSizeAC),
-    setTotalSize: functionForDispatch(dispatch, setTotalSizeAC),
-    setUsers: functionForDispatch(dispatch, setUsersAC),
-});
+const mapDispatchToProps = {
+    follow: followAC,
+    unfollow: unfollowAC,
+    changeCurrentPage: changeCurrentPageAC,
+    setPageSize: setPageSizeAC,
+    setTotalSize: setTotalSizeAC,
+    setUsers: setUsersAC,
+    changeFetching: changeFetchingAC,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(FindUsers);

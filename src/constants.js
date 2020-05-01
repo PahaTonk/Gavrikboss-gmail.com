@@ -12,3 +12,4 @@ export const CHANGE_CURRENT_PAGE = 'CHANGE_CURRENT_PAGE';
 export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
 export const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 export const SET_USERS = 'SET_USERS';
+export const FETCHING_USERS = 'FETCHING_USERS';
