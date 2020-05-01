@@ -1,86 +1,103 @@
-import { FOLLOW, UNFOLLOW } from '../../constants';
+import {
+    FOLLOW,
+    UNFOLLOW,
+    SET_USERS,
+    CHANGE_CURRENT_PAGE,
+    SET_PAGE_SIZE,
+    SET_TOTAL_COUNT,
+} from '../../constants';
 
 const initialState = {
-	users: [
-		{
-			id: 'vatson',
-			name: 'Dog Vatson',
-			status: 'I like ball',
-			location: {
-				city: 'Minsk',
-				country: 'Belarus',
-			},
-			friend: true,
-			avatar:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQITmE6hyq7RBxa8T7OiAHftxOEph097nZf2UxDr44mjhovGKxI',
-		},
-		{
-			id: 'harry',
-			name: 'Cat Harry',
-			status: 'Viskas is fantastic',
-			location: {
-				city: 'Kiyv',
-				country: 'Ukraine',
-			},
-			friend: false,
-			avatar:
-				'https://cs8.pikabu.ru/post_img/big/2017/02/10/8/1486732859195522448.jpg',
-		},
-		{
-			id: 'Joker',
-			name: 'Dog Jocker',
-			status: 'Wow wow ',
-			location: {
-				city: 'Minsk',
-				country: 'Belarus',
-			},
-			friend: true,
-			avatar: 'https://i.forfun.com/j9k4l5lc.jpeg',
-		},
-		{
-			id: 'zord',
-			name: 'Dog Zord',
-			status: "I'm crazy boy",
-			location: {
-				city: 'London',
-				country: 'UK',
-			},
-			friend: true,
-			avatar:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUsXCljibokfNvJV6UKn6xBUdqLLvGy50eA2pd0saYGVfD1A2r',
-		},
-	],
+    users: [],
+    pageSize: 1,
+    total: 1,
+    currentPage: 1,
 };
 
 const usersReducer = (state = initialState, action) => {
-	let _state = { ...state };
+    let _state = { ...state };
 
-	const followingManagement = (id, toggle) => {
-		const users = [..._state.users];
-		const user = users.find(item => item.id === id);
+    const followingManagement = (id, toggle) => {
+        const users = [..._state.users].map(user => {
+            if (user.id !== id) return user;
 
-		user.friend = toggle;
+            return { ...user, friend: toggle };
+        });
 
-		_state = { ...state, users };
-	};
+        _state = { ...state, users };
+    };
 
-	switch (action.type) {
-		case FOLLOW:
-			followingManagement(action.userId, true);
-			break;
+    const changeCurrentPage = currentPage => {
+        _state = {
+            ..._state,
+            currentPage,
+        };
+    };
 
-		case UNFOLLOW:
-			followingManagement(action.userId, false);
-			break;
+    const setPageSize = pageSize => {
+        _state = {
+            ..._state,
+            pageSize,
+        };
+    };
 
-		default:
-			break;
-	}
+    const setTotalCount = total => {
+        _state = {
+            ..._state,
+            total,
+        };
+    };
 
-	return _state;
+    const setUsers = users => {
+        _state = {
+            ..._state,
+            users,
+        };
+    };
+
+    switch (action.type) {
+        case FOLLOW:
+            followingManagement(action.userId, true);
+            break;
+
+        case UNFOLLOW:
+            followingManagement(action.userId, false);
+            break;
+
+        case CHANGE_CURRENT_PAGE:
+            changeCurrentPage(action.currentPage);
+            break;
+
+        case SET_PAGE_SIZE:
+            setPageSize(action.pageSize);
+            break;
+
+        case SET_TOTAL_COUNT:
+            setTotalCount(action.total);
+            break;
+
+        case SET_USERS:
+            setUsers(action.users);
+            break;
+
+        default:
+            break;
+    }
+
+    return _state;
 };
 
 export const followAC = id => ({ type: FOLLOW, userId: id });
 export const unfollowAC = id => ({ type: UNFOLLOW, userId: id });
+export const changeCurrentPageAC = currentPage => ({
+    type: CHANGE_CURRENT_PAGE,
+    currentPage,
+});
+export const setPageSizeAC = pageSize => ({ type: SET_PAGE_SIZE, pageSize });
+export const setTotalSizeAC = total => ({ type: SET_TOTAL_COUNT, total });
+export const setUsersAC = users => ({
+    type: SET_USERS,
+    users,
+});
 
 export default usersReducer;

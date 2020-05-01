@@ -1,0 +1,58 @@
+{
+    "users": [
+        {
+            "id": "baron",
+            "name": "Baron",
+            "status": "Looking for a baroness",
+            "kind": "cat",
+            "gender": "male",
+            "location": {
+                "city": "Hrodna",
+                "country": "Belarus"
+            },
+            "friend": false,
+            "avatar": ""
+        },
+        {
+            "id": "jack",
+            "name": "Jack",
+            "status": "Where is my ball?",
+            "kind": "dog",
+            "gender": "male",
+            "location": {
+                "city": "Brest",
+                "country": "Belarus"
+            },
+            "friend": false,
+            "avatar": ""
+        },
+        {
+            "id": "jessie",
+            "name": "Jessie",
+            "status": "I listen to music",
+            "kind": "dog",
+            "gender": "female",
+            "location": {
+                "city": "Kazan",
+                "country": "Russia"
+            },
+            "friend": false,
+            "avatar": ""
+        },
+        {
+            "id": "bonia",
+            "name": "Bonia",
+            "status": "Selling whiskas",
+            "kind": "cat",
+            "gender": "female",
+            "location": {
+                "city": "Kharkiv",
+                "country": "Ukraine"
+            },
+            "friend": false,
+            "avatar": ""
+        }
+    ],
+    "total": 16,
+    "pageSize": 4
+}

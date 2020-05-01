@@ -1,0 +1,39 @@
+@import './../../../helpers/variables.scss';
+
+.user {
+	display: flex;
+	margin-bottom: 25px;
+	padding: 10px 15px;
+
+	&__column {
+		&_left {
+			flex-basis: 20%;
+		}
+
+		&_right {
+			flex-basis: 80%;
+		}
+    }
+    
+    &__view {
+        @extend %flex-column;
+        align-items: center;
+    }
+
+	&__avatar {
+        @include avatar(100px);
+        margin-bottom: 5px;
+    }
+    
+    &__info {
+        @include flex(space-between);
+        flex-wrap: wrap;
+        border: $main_border;
+        border-radius: 25px;
+        padding: 10px 15px;
+    }
+
+    &__status {
+        flex-basis: 100%;
+    }
+}

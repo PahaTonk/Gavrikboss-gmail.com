@@ -1,0 +1,58 @@
+{
+    "users": [
+        {
+            "id": "vatson",
+            "name": "Vatson",
+            "status": "I like ball",
+            "kind": "dog",
+            "gender": "male",
+            "location": {
+                "city": "Minsk",
+                "country": "Belarus"
+            },
+            "friend": true,
+            "avatar": "./avatars/vatson.jpg"
+        },
+        {
+            "id": "harry",
+            "name": "Harry",
+            "status": "Whiskas is fantastic",
+            "kind": "cat",
+            "gender": "male",
+            "location": {
+                "city": "Kiyv",
+                "country": "Ukraine"
+            },
+            "friend": false,
+            "avatar": "./avatars/harry.jpg"
+        },
+        {
+            "id": "joker",
+            "name": "Jocker",
+            "status": "Wow wow ",
+            "kind": "dog",
+            "gender": "male",
+            "location": {
+                "city": "Minsk",
+                "country": "Belarus"
+            },
+            "friend": true,
+            "avatar": "./avatars/jocker.jpeg"
+        },
+        {
+            "id": "zord",
+            "name": "Zord",
+            "status": "I'm crazy boy",
+            "kind": "dog",
+            "gender": "male",
+            "location": {
+                "city": "London",
+                "country": "UK"
+            },
+            "friend": true,
+            "avatar": "./avatars/zord.jpg"
+        }
+    ],
+    "total": 16,
+    "pageSize": 4
+}

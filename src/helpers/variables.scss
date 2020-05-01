@@ -3,17 +3,18 @@ $white: #ffffff;
 $main_border: 1px solid #e7e8e9;
 
 %flex-column {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
-@mixin flex($justify-content) {
-	display: flex;
-	justify-content: $justify-content;
+@mixin flex($justify-content: center, $align-items: center, $flex-direction: row) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
 }
-
 
 @mixin avatar($size: 50px) {
-	width: $size;
-	height: $size;
+    width: $size;
+    height: $size;
 }

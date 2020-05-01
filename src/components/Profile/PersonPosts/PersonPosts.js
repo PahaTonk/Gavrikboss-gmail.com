@@ -2,11 +2,12 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import FormText from '../../small-components/FormText';
 import {
-	addPostActionCreator,
-	updateNewPostTextActionCreator,
+	addPostAC,
+	updateNewPostTextAC,
 } from './../../../redux/reducers/profileReducer';
 import styles from './../profile.module.scss';
 import Posts from './Post';
+import { functionForDispatch } from '../../../helpers/defaultFunctions';
 
 /**
  * @description profile component, creates and shows user posts
@@ -76,16 +77,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addPost: () => {
-			const addPostAction = addPostActionCreator();
-
-			dispatch(addPostAction);
-		},
-		updateNewPostText: text => {
-			const updateTextPostAction = updateNewPostTextActionCreator(text);
-
-			dispatch(updateTextPostAction);
-		},
+		addPost: functionForDispatch(dispatch, addPostAC),
+		updateNewPostText: functionForDispatch(dispatch, updateNewPostTextAC),
 	};
 };
 

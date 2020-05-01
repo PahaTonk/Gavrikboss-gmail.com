@@ -1,0 +1,45 @@
+{
+    "users": [
+        {
+            "id": "bagira",
+            "name": "Bagira",
+            "status": "The jungle call me",
+            "kind": "cat",
+            "gender": "female",
+            "location": {
+                "city": "Berlin",
+                "country": "Germany"
+            },
+            "friend": false,
+            "avatar": ""
+        },
+        {
+            "id": "hatiko",
+            "name": "Hatiko",
+            "status": "Wait",
+            "kind": "dog",
+            "gender": "male",
+            "location": {
+                "city": "New York",
+                "country": "USA"
+            },
+            "friend": false,
+            "avatar": ""
+        },
+        {
+            "id": "bim",
+            "name": "Bim",
+            "status": "Bim bom",
+            "kind": "cat",
+            "gender": "male",
+            "location": {
+                "city": "Madrid",
+                "country": "Spain"
+            },
+            "friend": false,
+            "avatar": ""
+        }
+    ],
+    "total": 15,
+    "pageSize": 4
+}

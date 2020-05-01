@@ -1,0 +1,58 @@
+{
+    "users": [
+        {
+            "id": "Bonia",
+            "name": "Bonia",
+            "status": "Selling whiskas",
+            "kind": "cat",
+            "gender": "female",
+            "location": {
+                "city": "Moscow",
+                "country": "Russia"
+            },
+            "friend": false,
+            "avatar": ""
+        },
+        {
+            "id": "lord",
+            "name": "Lord",
+            "status": "V-vendetta",
+            "kind": "cat",
+            "gender": "male",
+            "location": {
+                "city": "Gomel",
+                "country": "Belarus"
+            },
+            "friend": false,
+            "avatar": ""
+        },
+        {
+            "id": "zorro",
+            "name": "Zorro",
+            "status": "Fly to the sea",
+            "kind": "dog",
+            "gender": "male",
+            "location": {
+                "city": "Minsk",
+                "country": "Belarus"
+            },
+            "friend": false,
+            "avatar": ""
+        },
+        {
+            "id": "gerda",
+            "name": "Gerda",
+            "status": "Royal blood in me",
+            "kind": "dog",
+            "gender": "female",
+            "location": {
+                "city": "St. Petersburg",
+                "country": "Russia"
+            },
+            "friend": false,
+            "avatar": ""
+        }
+    ],
+    "total": 16,
+    "pageSize": 4
+}

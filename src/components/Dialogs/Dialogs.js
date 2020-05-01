@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-	addMessageActionCreator,
-	updateMessageTextActionCreator,
+	addMessageAC,
+	updateMessageTextAC,
 } from '../../redux/reducers/dialogsReducer';
 import FormText from '../small-components/FormText';
 import styles from './dialogs.module.scss';
 import Message from './Message';
 import User from './User';
+import { functionForDispatch } from '../../helpers/defaultFunctions';
 
 /**
  * @description dialogs page
@@ -92,16 +93,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addMessage: () => {
-			const actionNewMessage = addMessageActionCreator();
-
-			dispatch(actionNewMessage);
-		},
-		updateMessageText: text => {
-			const action = updateMessageTextActionCreator(text);
-
-			dispatch(action);
-		},
+		addMessage: functionForDispatch(dispatch, addMessageAC),
+		updateMessageText: functionForDispatch(dispatch, updateMessageTextAC),
 	};
 };
 

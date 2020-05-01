@@ -1,67 +1,124 @@
-import React from 'react';
-import { followAC, unfollowAC } from '../../redux/reducers/usersReducer';
+/* eslint-disable react/prop-types */
+import React, { Component, Fragment } from 'react';
+import {
+    followAC,
+    unfollowAC,
+    setUsersAC,
+    changeCurrentPageAC,
+    setPageSizeAC,
+    setTotalSizeAC,
+} from '../../redux/reducers/usersReducer';
 import styles from './find-users.module.scss';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import Avatar from './../small-components/Avatar';
-import Button from '../small-components/Button';
+import User from './User';
+import * as axios from 'axios';
+import Loader from 'react-loader-spinner';
+import Pagination from '../small-components/Pagination';
+import { functionForDispatch } from '../../helpers/defaultFunctions';
+import { MAIN_COLOR } from '../../constants';
 
-const FindUsers = props => {
-	const { users } = props;
-	const { follow, unfollow } = props;
-	const followingManagement = (id, isFriend) => {
+/**
+ * @description find-users page
+ * @param {Array} users users list
+ * @param {Number} pageSize quantity users for one page
+ * @param {Number} total total users
+ */
+class FindUsers extends Component {
+    async componentDidMount() {
+        const { users, setUsers, setPageSize, setTotalSize } = this.props;
 
-		isFriend ? unfollow(id) : follow(id);
-	}
-	const usersList = users.map(user => (
-		<article key={user.id} className={`${styles.user} list__item`}>
-			<div className={`${styles.user__column_left} ${styles.user__view}`}>
-				<NavLink to={`/users/${user.id}`}>
-					<Avatar
-						avatar={user.avatar}
-						name={user.name}
-						classes={styles.user__avatar}
-					/>
-				</NavLink>
-				
-				<form onSubmit={event => {
-					event.preventDefault();
+        if (users.length) return;
 
-					followingManagement(user.id, user.friend);
-				}}>
-					<Button type='submit' text={user.friend ? 'Unfollow' : 'Follow'} classes={styles.user__following}/>
-				</form>
-			</div>
-			<div className={`${styles.user__column_right} ${styles.user__info}`}>
-				<h3 className={styles.user__name}>{user.name}</h3>
-				<h3 className={styles.user__location}>{`${user.location.country}, ${user.location.city}`}</h3>
-				<span className={styles.user__status}>{user.status}</span>
-			</div>
-		</article>
-	));
+        try {
+            const { data } = await axios.get('/users1.json');
 
-	return <section className={`${styles.users} list`}>{usersList}</section>;
-};
+            setUsers(data.users);
+            setPageSize(data.pageSize);
+            setTotalSize(data.total);
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    /**
+     * @description following/unfolowing on user
+     * @param {String} id user id
+     * @param {Boolean} isFriend
+     */
+    followingManagement = (id, isFriend) => {
+        const { follow, unfollow } = this.props;
+
+        isFriend ? unfollow(id) : follow(id);
+    };
+
+    /**
+     * @description pagination logic
+     * @param {Number} currentPage
+     */
+    paginationManagement = async currentPage => {
+        const { setUsers, changeCurrentPage } = this.props;
+
+        try {
+            const {
+                data: { users },
+            } = await axios.get(`/users${currentPage}.json`);
+
+            setUsers(users);
+            changeCurrentPage(currentPage);
+        } catch (error) {
+            throw new Error(error);
+        }
+    };
+
+    render() {
+        const { users, pageSize, total, currentPage } = this.props;
+        const isEmptyUsers = !users.length;
+        const pagesCount = Math.ceil(+total / +pageSize);
+        const usersList = users.map(user => (
+            <User
+                key={user.id}
+                followingManagement={this.followingManagement}
+                {...user}
+            />
+        ));
+
+        return (
+            <section className={`${styles.users} list`}>
+                {isEmptyUsers ? (
+                    <Loader type='Circles' color={MAIN_COLOR} />
+                ) : (
+                    <Fragment>
+                        <div className={styles.users__list}>{usersList}</div>
+                        <div className={styles.users__pagination}>
+                            <Pagination
+                                quantity={pagesCount}
+                                activeNumber={currentPage}
+                                clickCB={this.paginationManagement}
+                            />
+                        </div>
+                    </Fragment>
+                )}
+            </section>
+        );
+    }
+}
 
 const mapStateToProps = state => {
-	const {
-		usersState: { users },
-	} = state;
+    const {
+        usersState: { users, pageSize, total, currentPage },
+    } = state;
 
-	return { users };
+    return { users, pageSize, total, currentPage };
 };
 
 const mapDispatchToProps = dispatch => ({
-	follow: id => {
-		const action = followAC(id);
-
-		dispatch(action);
-	},
-	unfollow: id => {
-		const action = unfollowAC(id);
-
-		dispatch(action);
-	},
+    follow: functionForDispatch(dispatch, followAC),
+    unfollow: functionForDispatch(dispatch, unfollowAC),
+    changeCurrentPage: functionForDispatch(dispatch, changeCurrentPageAC),
+    setPageSize: functionForDispatch(dispatch, setPageSizeAC),
+    setTotalSize: functionForDispatch(dispatch, setTotalSizeAC),
+    setUsers: functionForDispatch(dispatch, setUsersAC),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FindUsers);
