@@ -2,6 +2,7 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3005;
@@ -15,6 +16,12 @@ const options = {
 };
 
 mongoose.connect(uri, options);
+
+/**
+ * @description unite fronnt request and backend
+ */
+app.use(cors());
+
 /**
  * @description use pack on '/graphql' route
  */

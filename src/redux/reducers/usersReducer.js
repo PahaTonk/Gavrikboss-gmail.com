@@ -1,12 +1,4 @@
-import {
-    FOLLOW,
-    UNFOLLOW,
-    SET_USERS,
-    CHANGE_CURRENT_PAGE,
-    SET_PAGE_SIZE,
-    SET_TOTAL_COUNT,
-    FETCHING_USERS,
-} from '../../constants';
+import { FOLLOW, UNFOLLOW, SET_USERS, CHANGE_CURRENT_PAGE, SET_PAGE_SIZE, SET_TOTAL_COUNT, FETCHING_USERS } from '../../constants';
 
 const initialState = {
     users: [],
@@ -17,87 +9,66 @@ const initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
-    let _state = { ...state };
-
     const followingManagement = (id, toggle) => {
-        const users = [..._state.users].map(user => {
+        const users = [...state.users].map(user => {
             if (user.id !== id) return user;
 
             return { ...user, friend: toggle };
         });
 
-        _state = { ...state, users };
+        return { ...state, users };
     };
 
-    const changeCurrentPage = currentPage => {
-        _state = {
-            ..._state,
-            currentPage,
-        };
-    };
+    const changeCurrentPage = currentPage => ({
+        ...state,
+        currentPage,
+    });
 
-    const setPageSize = pageSize => {
-        _state = {
-            ..._state,
-            pageSize,
-        };
-    };
+    const setPageSize = pageSize => ({
+        ...state,
+        pageSize,
+    });
 
-    const setTotalCount = total => {
-        _state = {
-            ..._state,
-            total,
-        };
-    };
+    const setTotalCount = total => ({
+        ...state,
+        total,
+    });
 
-    const setUsers = users => {
-        _state = {
-            ..._state,
-            users,
-        };
-    };
+    const setUsers = users => ({
+        ...state,
+        users,
+    });
 
-    const changeFetching = toggle => {
-        _state = {
-            ..._state,
-            isFetching: toggle,
-        };
-    };
+    const changeFetching = toggle => ({
+        ...state,
+        isFetching: toggle,
+    });
 
     switch (action.type) {
         case FOLLOW:
-            followingManagement(action.userId, true);
-            break;
+            return followingManagement(action.userId, true);
 
         case UNFOLLOW:
-            followingManagement(action.userId, false);
-            break;
+            return followingManagement(action.userId, false);
 
         case CHANGE_CURRENT_PAGE:
-            changeCurrentPage(action.currentPage);
-            break;
+            return changeCurrentPage(action.currentPage);
 
         case SET_PAGE_SIZE:
-            setPageSize(action.pageSize);
-            break;
+            return setPageSize(action.pageSize);
 
         case SET_TOTAL_COUNT:
-            setTotalCount(action.total);
-            break;
+            return setTotalCount(action.total);
 
         case SET_USERS:
-            setUsers(action.users);
-            break;
+            return setUsers(action.users);
 
         case FETCHING_USERS:
-            changeFetching(action.toggle);
-            break;
+            return changeFetching(action.toggle);
 
         default:
-            break;
+            return state;
     }
-
-    return _state;
 };
 
 export const followAC = id => ({ type: FOLLOW, userId: id });

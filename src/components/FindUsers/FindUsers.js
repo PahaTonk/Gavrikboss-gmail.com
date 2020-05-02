@@ -15,6 +15,7 @@ import User from './User';
 import * as axios from 'axios';
 import Loader from 'react-loader-spinner';
 import Pagination from '../small-components/Pagination';
+import findUsersHOC from './FindUsersHOC';
 import { MAIN_COLOR } from '../../constants';
 
 /**
@@ -106,7 +107,7 @@ class FindUsers extends Component {
                 {...user}
             />
         ));
-
+            console.log(this.props.data)
         return (
             <section className={`${styles.users} list`}>
                 {isFetching ? (
@@ -146,4 +147,4 @@ const mapDispatchToProps = {
     changeFetching: changeFetchingAC,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FindUsers);
+export default connect(mapStateToProps, mapDispatchToProps)(findUsersHOC(FindUsers));

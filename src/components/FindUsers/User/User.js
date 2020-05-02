@@ -23,12 +23,7 @@ const User = props => {
         <article className={`${styles.user} list__item`}>
             <div className={`${styles.user__column_left} ${styles.user__view}`}>
                 <NavLink to={`/profile/${id}`}>
-                    <Avatar
-                        avatar={avatar}
-                        name={name}
-                        classes={styles.user__avatar}
-                        kind={kind}
-                    />
+                    <Avatar avatar={avatar} name={name} classes={styles.user__avatar} kind={kind} />
                 </NavLink>
 
                 <form
@@ -38,20 +33,12 @@ const User = props => {
                         followingManagement(id, friend);
                     }}
                 >
-                    <Button
-                        type='submit'
-                        text={friend ? 'Unfollow' : 'Follow'}
-                        classes={styles.user__following}
-                    />
+                    <Button type='submit' text={friend ? 'Unfollow' : 'Follow'} classes={styles.user__following} />
                 </form>
             </div>
-            <div
-                className={`${styles.user__column_right} ${styles.user__info}`}
-            >
+            <div className={`${styles.user__column_right} ${styles.user__info}`}>
                 <h3 className={styles.user__name}>{name}</h3>
-                <h3
-                    className={styles.user__location}
-                >{`${country}, ${city}`}</h3>
+                <h3 className={styles.user__location}>{`${country}, ${city}`}</h3>
                 <span className={styles.user__status}>{status}</span>
             </div>
         </article>
