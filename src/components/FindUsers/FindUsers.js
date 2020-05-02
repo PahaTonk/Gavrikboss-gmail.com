@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react';
 import {
     followAC,

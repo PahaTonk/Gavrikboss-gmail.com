@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Avatar from './../../small-components/Avatar';
@@ -23,7 +22,7 @@ const User = props => {
     return (
         <article className={`${styles.user} list__item`}>
             <div className={`${styles.user__column_left} ${styles.user__view}`}>
-                <NavLink to={`/users/${id}`}>
+                <NavLink to={`/profile/${id}`}>
                     <Avatar
                         avatar={avatar}
                         name={name}

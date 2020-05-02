@@ -16,6 +16,8 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: ['react'],
-    rules: {},
-    parser: 'babel-eslint'
+    rules: {
+        'react/prop-types': 0,
+    },
+    parser: 'babel-eslint',
 };
