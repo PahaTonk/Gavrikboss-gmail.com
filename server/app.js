@@ -9,6 +9,7 @@ const uri = 'mongodb+srv://admin:admin123@social-legw0.mongodb.net/social';
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
     retryWrites: true,
     w: 'majority',
 };
