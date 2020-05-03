@@ -1,0 +1,59 @@
+query ($id: ID) {
+  user(id: $id) {
+    name
+    friend
+    locationID
+    location {
+      city
+      country
+    }
+  }
+}
+
+query ($friend: Boolean, $part: Int) {
+  friends(friend: $friend, part: $part) {
+    name
+  }
+}
+
+
+mutation($name: String!, $status: String, $friend: Boolean!, $avatar: String, $kind: String, $gender: String, $locationID: ID) {
+    addUser(name: $name, status: $status, friend: $friend, avatar: $avatar, kind: $kind, gender: $gender, locationID: $locationID) {
+        name
+        status
+        friend
+        avatar
+        kind
+        gender
+        locationID
+    }
+}
+mutation($id: ID, $status: String!) {
+    updateUserStatus(id: $id, status: $status) {
+        status
+    }
+}
+
+mutation($id: ID, $friend: Boolean!) {
+    updateFollow(id: $id, friend: $friend) {
+        friend
+    }
+}
+mutation ( $city: String, $country: String) {
+  addLocation( city: $city, country: $country) {
+    country
+    city
+  }
+}
+
+mutation ($id: ID, $locationID: ID) {
+  updateUserLocationId(id: $id, locationID: $locationID) {
+    name
+    id
+    locationID
+    location {
+      city
+      country
+    }
+  }
+}
